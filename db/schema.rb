@@ -52,16 +52,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_200238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "medical_histories", force: :cascade do |t|
-    t.bigint "clinic_id", null: false
-    t.bigint "user_id", null: false
-    t.date "appointment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["clinic_id"], name: "index_medical_histories_on_clinic_id"
-    t.index ["user_id"], name: "index_medical_histories_on_user_id"
-  end
-
   create_table "medical_images", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -110,8 +100,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_200238) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "medical_histories", "clinics"
-  add_foreign_key "medical_histories", "users"
   add_foreign_key "records", "clinics"
   add_foreign_key "records", "medical_images"
   add_foreign_key "records", "medical_results"

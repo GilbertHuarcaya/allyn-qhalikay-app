@@ -7,7 +7,29 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :user_name,
+                placeholder: "Marcela Soriana Palacios Matias",
+                required: true,
+                autofocus: true,
+                input_html: {
+                  autocomplete: "nombre completo",
+                } %>
+    <%= f.input :dni,
+                placeholder: "00000000",
+                required: true,
+                autofocus: true,
+                input_html: {
+                  autocomplete: "dni",
+                } %>
+    <%= f.input :address,
+                placeholder: "Calle los algarrobos Lima Perú",
+                required: true,
+                autofocus: true,
+                input_html: {
+                  autocomplete: "dirección",
+                } %>
+    <%= f.input :photo, required: false %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
