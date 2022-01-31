@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_180315) do
+ActiveRecord::Schema.define(version: 2022_01_31_194024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clinics", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "medical_histories", force: :cascade do |t|
+    t.bigint "clinic_id", null: false
+    t.bigint "user_id", null: false
+    t.date "appointment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_id"], name: "index_medical_histories_on_clinic_id"
+    t.index ["user_id"], name: "index_medical_histories_on_user_id"
+  end
+
+  create_table "medical_images", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "medical_results", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.bigint "clinic_id", null: false
+    t.bigint "user_id", null: false
+    t.date "appointment"
+    t.bigint "medical_image_id", null: false
+    t.bigint "medical_result_id", null: false
+    t.bigint "prescription_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_id"], name: "index_records_on_clinic_id"
+    t.index ["medical_image_id"], name: "index_records_on_medical_image_id"
+    t.index ["medical_result_id"], name: "index_records_on_medical_result_id"
+    t.index ["prescription_id"], name: "index_records_on_prescription_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +77,11 @@ ActiveRecord::Schema.define(version: 2022_01_31_180315) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "medical_histories", "clinics"
+  add_foreign_key "medical_histories", "users"
+  add_foreign_key "records", "clinics"
+  add_foreign_key "records", "medical_images"
+  add_foreign_key "records", "medical_results"
+  add_foreign_key "records", "prescriptions"
+  add_foreign_key "records", "users"
 end

@@ -1,0 +1,2 @@
+class MedicalResult < ApplicationRecord
+end
