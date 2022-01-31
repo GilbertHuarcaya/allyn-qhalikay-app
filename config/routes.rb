@@ -6,14 +6,13 @@ Rails.application.routes.draw do
     collection do
       get :medical_histories
     end
-    resources :medical_image, only: [:create]
-    resources :medical_result, only: [:create]
-    resources :prescription, only: [:create]
+    resources :medical_image
+    resources :medical_result
+    resources :prescription
   end
-  resources :rentals, only: [:destroy, :show, :update, :edit] do
+  resources :clinics do
     collection do
-      get :my_rentals
-      patch "/:id/complete", to: "rentals#complete", as: "complete"
+      get :search
     end
   end
 end
