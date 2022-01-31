@@ -3,4 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :records, dependent: :destroy
+  has_many :medical_results, through: :records, dependent: :destroy
+  has_many :medical_images, through: :records, dependent: :destroy
+  has_many :prescriptions, through: :records, dependent: :destroy
+  has_one_attached :photo
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
+
+  validates :user_name, :phone, :address, presence: true
 end

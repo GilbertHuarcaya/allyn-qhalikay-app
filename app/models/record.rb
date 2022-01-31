@@ -4,4 +4,6 @@ class Record < ApplicationRecord
   belongs_to :medical_image
   belongs_to :medical_result
   belongs_to :prescription
+
+  validates :appointment, presence: true
 end

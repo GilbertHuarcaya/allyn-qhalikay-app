@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_194403) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "medical_histories", force: :cascade do |t|
-    t.bigint "clinic_id", null: false
-    t.bigint "user_id", null: false
-    t.date "appointment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["clinic_id"], name: "index_medical_histories_on_clinic_id"
-    t.index ["user_id"], name: "index_medical_histories_on_user_id"
-  end
-
   create_table "medical_images", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -80,8 +70,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_194403) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "medical_histories", "clinics"
-  add_foreign_key "medical_histories", "users"
   add_foreign_key "records", "clinics"
   add_foreign_key "records", "medical_images"
   add_foreign_key "records", "medical_results"
