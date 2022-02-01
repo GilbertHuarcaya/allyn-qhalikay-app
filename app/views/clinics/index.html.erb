@@ -1,24 +1,51 @@
-<div class="search-bar">
-<h3> Busca Centros de Salud cercanos </h3>
-<%= form_tag clinics_path, method: :get, class: "d-flex w-100" do %>
-
-<div class="input">
-  <%= text_field_tag :query,
-                     params[:query],
-                     class: "form-control",
-                     placeholder: "Search by address" %>
-</div>
-<div class="button">
-  <%= submit_tag "Buscar", class: "btn btn-primary" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1632489031533-62cf8cea9d2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80);">
+  <div class="container">
+    <h1>Reserva tu <strong>cita</strong>!</h1>
+    <p>Encuentra el centro de salud mas cercano, a una llamada</p>
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a clinic" %>
+      <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
+    <% end %>
+  </div>
 </div>
 
-<% end %>
-  <p><%= pluralize(@clinics.size, "resultado") %></p>
+<div class="cards-container">
+
+  <div class="only-cards mt-3">
+    <h2 class="center">Centros de salud en el área</h2>
+    <div class="cards">
+      <% @clinics.each do |clinic| %>
+        <div class="card-trip">
+          <% if clinic.photo.present? %>
+            <%= cl_image_tag clinic.photo.key %>
+          <% else %>
+            <img src="https://source.unsplash.com/1600x900/?office/<%= rand(1..30) %>" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to clinic.name, clinic_path(clinic) %></h2>
+              <p style="display:inline-block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 30ch;"><%= clinic.description %></p>
+              <p>ubicado en: <%= clinic.address %></p>
+            </div>
+            <h2 class="card-trip-pricing">Open</h2>
+            <% if clinic.photo.attached? %>
+              <%= cl_image_tag clinic.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+             <%= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "card-trip-user avatar-bordered" %>
+            <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+  </div>
+
 </div>
-<% @clinics.each do |clinic| %>
-<p><%= clinic.name %></p>
-<% end %>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>"></div>
