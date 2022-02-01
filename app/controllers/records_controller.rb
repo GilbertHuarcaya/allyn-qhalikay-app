@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
 
   def index
     @records = Record.where(user: current_user)
-    # @medicalresult = MedicalResult.find(params[:medicalresult_id])
+     #@medicalresult = MedicalResult.find(params[:medicalresult_id])
     # @medicalimage = MedicalImage.find(params [:medicalimage_id])
     # @prescription = Prescription.find(params[:prescription_id])
 

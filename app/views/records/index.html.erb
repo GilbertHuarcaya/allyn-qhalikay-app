@@ -1,0 +1,63 @@
+<%  @records.each do |record| %>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><%= record.clinic.name%> <%= record.appointment%>
+          <br>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          <ul>
+            <li>
+              <div class="d-flex justify-content-between">
+              <h2>Imagenes <%= record.medical_image.photos.count.positive? ? record.medical_image.photos.count : 0  %></h2>
+                <% if record.medical_image.photos.count.positive? %>
+                  <div>
+                    <%# link_to "detalles",  record_medical_image_path(record.medical_image) %>
+                    <button type="button" class="btn btn-primary">Descargar</button> <button type="button" class="btn btn-light">Ver detalles</button>
+                  </div>
+                <%else %>
+                  <div>
+                    <p> No hay archivos por mostrar </p>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+            <li>
+            <div class="d-flex justify-content-between">
+              <h2>Resultados <%= record.medical_result.photos.count.positive? ? record.medical_result.photos.count : 0  %></h2>
+                <% if record.medical_result.photos.count.positive? %>
+                  <div>
+                    <%# link_to "detalles", record_medical_result_path(record.medical_result) %>
+                    <button type="button" class="btn btn-primary">Descargar</button>  <button type="button" class="btn btn-light">Ver detalles</button>
+                  </div>
+                <%else %>
+                  <div>
+                    <p> No hay archivos por mostrar </p>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex justify-content-between">
+                <h2>Recetas <%= record.prescription.photos.count.positive? ? record.prescription.photos.count : 0  %></h2>
+                  <% if record.prescription.photos.count.positive? %>
+                    <div>
+                      <%# link_to "detalles", record_prescription_path(record.prescription) %>
+                      <button type="button" class="btn btn-primary">Descargar</button>  <button type="button" class="btn btn-light">Ver detalles</button>
+                    </div>
+                  <%else %>
+                    <div>
+                      <p> No hay archivos por mostrar </p>
+                    </div>
+                  <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
