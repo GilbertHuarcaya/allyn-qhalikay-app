@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
 
   def index
     if params[:query].present?
-      @records = policy_scope(Record).where(user: current_user).search_by_address_and_name(params[:query]).order(created_at: :desc)
+      @records = policy_scope(Record).where(user: current_user).search_by_date(params[:query]).order(created_at: :desc)
     else
       @records = policy_scope(Record).where(user: current_user).order(created_at: :desc)
     end
