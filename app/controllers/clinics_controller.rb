@@ -1,17 +1,66 @@
 class ClinicsController < ApplicationController
+  before_action :set_clinic, only: [:show, :update, :destroy, :edit]
+
   def index
     if params[:query].present?
-      @clinics = Clinic.search_by_address_and_name(params[:query])
+      @clinics = policy_scope(Clinic).search_by_address_and_name(params[:query]).order(created_at: :desc)
     else
-      @clinics = Clinic.all
+      @clinics = policy_scope(Clinic).order(created_at: :desc)
     end
     set_markers
   end
 
   def show
+    authorize @clinic
+    @marker = [
+      { lat: @clinic.latitude,
+        lng: @clinic.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { clinic: @clinic }),
+        image_url: helpers.asset_url("https://www.svgrepo.com/show/76803/hospital.svg") },
+    ]
+  end
+
+  def new
+    @clinic = clinic.new
+    authorize @clinic
+  end
+
+  def create
+    @clinic = Clinic.new(clinic_params)
+    @clinic.user = current_user
+    authorize @clinic
+    if @clinic.save
+      redirect_to clinic_path(@clinic)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    authorize @clinic
+    @clinic.destroy
+    redirect_to clinics_path
+  end
+
+  def edit
+    authorize @clinic
+  end
+
+  def update
+    authorize @clinic
+    @clinic.update(clinic_params)
+    redirect_to clinic_path(@clinic)
   end
 
   private
+
+  def set_clinic
+    @clinic = Clinic.find(params[:id])
+  end
+
+  def clinic_params
+    params.require(:clinic).permit(:description, :model, :price, :photo, :user, :address)
+  end
 
   def set_markers
     @markers = @clinics.geocoded.map do |clinic|
