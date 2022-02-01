@@ -26,8 +26,8 @@ const initMapbox = () => {
   element.style.backgroundImage = `url('${marker.image_url}')`;
   element.style.backgroundSize = 'contain';
   element.style.backgroundRepeat = 'no-repeat';
-  element.style.width = '80px';
-  element.style.height = '80px';
+  element.style.width = '50px';
+  element.style.height = '50px';
 
   // Pass the element as an argument to the new marker
   new mapboxgl.Marker(element)
@@ -36,6 +36,8 @@ const initMapbox = () => {
     .addTo(map);
 });
   fitMapToMarkers(map, markers);
+  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                      mapboxgl: mapboxgl }));
   }
 };
 
@@ -51,9 +53,3 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
   });
 };
-
-if (mapElement) {
-  // [...]
-  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                      mapboxgl: mapboxgl }));
-}
