@@ -6,4 +6,9 @@ class Record < ApplicationRecord
   belongs_to :prescription
 
   validates :appointment, presence: true
+  pg_search_scope :search_by_date,
+                  against: [:appointment],
+                  using: {
+                    tsearch: { prefix: true }, # <-- now `superman batm` will return something!
+                  }
 end

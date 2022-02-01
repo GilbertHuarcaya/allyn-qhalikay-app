@@ -1,3 +1,20 @@
+<div class="search-bar">
+<h3> Busca Centros de Salud cercanos </h3>
+<%= form_tag clinics_path, method: :get, class: "d-flex w-100" do %>
+
+<div class="input">
+  <%= text_field_tag :query,
+                     params[:query],
+                     class: "form-control",
+                     placeholder: "Search by address" %>
+</div>
+<div class="button">
+  <%= submit_tag "Buscar", class: "btn btn-primary" %>
+</div>
+
+<% end %>
+  <p><%= pluralize(@clinics.size, "resultado") %></p>
+</div>
 <% @clinics.each do |clinic| %>
 <p><%= clinic.name %></p>
 <% end %>
