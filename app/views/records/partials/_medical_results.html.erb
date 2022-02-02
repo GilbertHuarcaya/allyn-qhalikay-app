@@ -1,4 +1,4 @@
 <h1>Resultados médicos </h1>
-<% @record.medical_result.photos.each do |photo| %>
-  <%= cl_image_tag photo.key %>
-<% end  %>
+<% @record.medical_results.each do |result| %>
+  <%= cl_image_tag result.photo.key %>
+<% end %>

@@ -55,34 +55,37 @@ ActiveRecord::Schema.define(version: 2022_02_01_165300) do
   end
 
   create_table "medical_images", force: :cascade do |t|
+    t.string "title"
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_id"], name: "index_medical_images_on_record_id"
   end
 
   create_table "medical_results", force: :cascade do |t|
+    t.string "title"
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_id"], name: "index_medical_results_on_record_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_id"], name: "index_prescriptions_on_record_id"
   end
 
   create_table "records", force: :cascade do |t|
     t.bigint "clinic_id", null: false
     t.bigint "user_id", null: false
     t.date "appointment"
-    t.bigint "medical_image_id", null: false
-    t.bigint "medical_result_id", null: false
-    t.bigint "prescription_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "history", default: false
     t.index ["clinic_id"], name: "index_records_on_clinic_id"
-    t.index ["medical_image_id"], name: "index_records_on_medical_image_id"
-    t.index ["medical_result_id"], name: "index_records_on_medical_result_id"
-    t.index ["prescription_id"], name: "index_records_on_prescription_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
@@ -108,9 +111,9 @@ ActiveRecord::Schema.define(version: 2022_02_01_165300) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "medical_images", "records"
+  add_foreign_key "medical_results", "records"
+  add_foreign_key "prescriptions", "records"
   add_foreign_key "records", "clinics"
-  add_foreign_key "records", "medical_images"
-  add_foreign_key "records", "medical_results"
-  add_foreign_key "records", "prescriptions"
   add_foreign_key "records", "users"
 end

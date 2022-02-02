@@ -1,9 +1,9 @@
 class Record < ApplicationRecord
   belongs_to :clinic
   belongs_to :user
-  belongs_to :medical_image
-  belongs_to :medical_result
-  belongs_to :prescription
+  has_many :medical_images, dependent: :destroy
+  has_many :medical_results, dependent: :destroy
+  has_many :prescriptions, dependent: :destroy
 
   validates :appointment, presence: true
   include PgSearch::Model
