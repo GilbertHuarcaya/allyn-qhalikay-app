@@ -11,6 +11,14 @@ class RecordsController < ApplicationController
 
   def show
     authorize @record
+    if params[:item] == "medical-image"
+      @partial = "records/partials/medical_images"
+    elsif params[:item] == "medical-result"
+      @partial =  "records/partials/medical_results"
+    elsif params[:item] == "prescription"
+      @partial =  "records/partials/prescriptions"
+
+    end
   end
 
   def new

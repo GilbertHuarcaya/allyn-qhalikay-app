@@ -15,8 +15,8 @@
               <h2>Imagenes <%= record.medical_image.photos.count.positive? ? record.medical_image.photos.count : 0  %></h2>
                 <% if record.medical_image.photos.count.positive? %>
                   <div>
-                    <%# link_to "detalles",  record_medical_image_path(record.medical_image) %>
-                    <button type="button" class="btn btn-primary">Descargar</button> <button type="button" class="btn btn-light">Ver detalles</button>
+                    <%= link_to "detalles",  record_path(id: record.id, item: "medical-image"), class: "btn btn-primary" %>
+                    <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
                 <%else %>
                   <div>
@@ -30,8 +30,8 @@
               <h2>Resultados <%= record.medical_result.photos.count.positive? ? record.medical_result.photos.count : 0  %></h2>
                 <% if record.medical_result.photos.count.positive? %>
                   <div>
-                    <%# link_to "detalles", record_medical_result_path(record.medical_result) %>
-                    <button type="button" class="btn btn-primary">Descargar</button>  <button type="button" class="btn btn-light">Ver detalles</button>
+                    <%= link_to "detalles",  record_path(id: record.id, item: "medical-result"), class: "btn btn-primary" %>
+                    <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
                 <%else %>
                   <div>
@@ -45,9 +45,8 @@
                 <h2>Recetas <%= record.prescription.photos.count.positive? ? record.prescription.photos.count : 0  %></h2>
                   <% if record.prescription.photos.count.positive? %>
                     <div>
-                      <%# link_to "detalles", record_prescription_path(record.prescription) %>
-                      <button type="button" class="btn btn-primary">Descargar</button>  <button type="button" class="btn btn-light">Ver detalles</button>
-                    </div>
+                      <%= link_to "detalles",  record_path(id: record.id, item: "prescription"), class: "btn btn-primary" %>
+                      <button type="button" class="btn btn-primary">Descargar</button>
                   <%else %>
                     <div>
                       <p> No hay archivos por mostrar </p>

@@ -21,19 +21,27 @@ user.save!
 clinic = Clinic.create!(
   name: "Auna", address: "Lima", phone: "050607", description: "Atiende todas las especialidades",
 )
+medical1 = MedicalImage.new
+medical_image = URI.open("https://images.unsplash.com/photo-1643754713080-cbfc5be44520?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+medical1.photos.attach(io: medical_image, filename: 'foto.jpg', content_type: 'image/jpg')
 
-medical_image = MedicalImage.create!
-medical_result = MedicalResult.create!
-prescription = Prescription.create!
+medical_result2 = MedicalResult.new
+medical_result_image = URI.open("https://images.unsplash.com/photo-1643754713080-cbfc5be44520?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+medical_result2.photos.attach(io: medical_result_image, filename: 'foto.jpg', content_type: 'image/jpg')
 
-Record.create!(
-  appointment: "31/01/2022", user: user,
+prescription2 = Prescription.new
+prescription_image = URI.open("https://images.unsplash.com/photo-1643754713080-cbfc5be44520?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+prescription2.photos.attach(io: prescription_image, filename: 'foto.jpg', content_type: 'image/jpg')
+
+record = Record.new(
+  appointment: "31/01/2022",
+  user: user,
   clinic: clinic,
-  medical_image: medical_image,
-  medical_result: medical_result,
-  prescription: prescription,
+  medical_image: medical1,
+  medical_result: medical_result2,
+  prescription: prescription2,
 )
-record.save
+record.save!
 
 
 #user.photo.attach(io: open("./app/assets/images/user.jpg"), filename: "user.jpg", content_type: "image/jpg")
