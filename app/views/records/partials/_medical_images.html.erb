@@ -1,5 +1,5 @@
 <h1>HOLA </h1>
 
-<% @record.medical_image.photos.each do |photo| %>
-  <%= cl_image_tag photo.key %>
-<% end  %>
+<% @record.medical_images.each do |image| %>
+  <%= cl_image_tag image.photo.key %>
+<% end %>
