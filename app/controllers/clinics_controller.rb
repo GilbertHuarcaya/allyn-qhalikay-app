@@ -21,13 +21,12 @@ class ClinicsController < ApplicationController
   end
 
   def new
-    @clinic = clinic.new
+    @clinic = Clinic.new
     authorize @clinic
   end
 
   def create
     @clinic = Clinic.new(clinic_params)
-    @clinic.user = current_user
     authorize @clinic
     if @clinic.save
       redirect_to clinic_path(@clinic)
@@ -59,7 +58,7 @@ class ClinicsController < ApplicationController
   end
 
   def clinic_params
-    params.require(:clinic).permit(:description, :model, :price, :photo, :user, :address)
+    params.require(:clinic).permit(:description, :name, :photo, :photos, :address, :phone)
   end
 
   def set_markers
