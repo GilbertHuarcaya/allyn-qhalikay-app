@@ -1,24 +1,25 @@
-<%  @records.each do |record| %>
-  <div class="accordion" id="accordionPanelsStayOpenExample">
+<div class="accordion" id="accordionExample">
+<% @records.each do |record| %>
+
     <div class="accordion-item">
-      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-          <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><%= record.clinic.name%> <%= record.appointment%>
+      <h2 class="accordion-header" id=<%= "record-heading#{record.id}" %>>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
+          <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><%= record.clinic.name %> <%= record.appointment %>
           <br>
         </button>
       </h2>
-      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div id=<%= "record-collapse#{record.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{record.id}" %> >
         <div class="accordion-body">
           <ul>
             <li>
               <div class="d-flex justify-content-between">
-              <h2>Imagenes <%= record.medical_image.photos.count.positive? ? record.medical_image.photos.count : 0  %></h2>
+              <h2>Imagenes <%= record.medical_image.photos.count.positive? ? record.medical_image.photos.count : 0 %></h2>
                 <% if record.medical_image.photos.count.positive? %>
                   <div>
-                    <%= link_to "detalles",  record_path(id: record.id, item: "medical-image"), class: "btn btn-primary" %>
+                    <%= link_to "detalles", record_path(id: record.id, item: "medical-image"), class: "btn btn-primary" %>
                     <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
-                <%else %>
+                <% else %>
                   <div>
                     <p> No hay archivos por mostrar </p>
                   </div>
@@ -27,13 +28,13 @@
             </li>
             <li>
             <div class="d-flex justify-content-between">
-              <h2>Resultados <%= record.medical_result.photos.count.positive? ? record.medical_result.photos.count : 0  %></h2>
+              <h2>Resultados <%= record.medical_result.photos.count.positive? ? record.medical_result.photos.count : 0 %></h2>
                 <% if record.medical_result.photos.count.positive? %>
                   <div>
-                    <%= link_to "detalles",  record_path(id: record.id, item: "medical-result"), class: "btn btn-primary" %>
+                    <%= link_to "detalles", record_path(id: record.id, item: "medical-result"), class: "btn btn-primary" %>
                     <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
-                <%else %>
+                <% else %>
                   <div>
                     <p> No hay archivos por mostrar </p>
                   </div>
@@ -42,12 +43,12 @@
             </li>
             <li>
               <div class="d-flex justify-content-between">
-                <h2>Recetas <%= record.prescription.photos.count.positive? ? record.prescription.photos.count : 0  %></h2>
+                <h2>Recetas <%= record.prescription.photos.count.positive? ? record.prescription.photos.count : 0 %></h2>
                   <% if record.prescription.photos.count.positive? %>
                     <div>
-                      <%= link_to "detalles",  record_path(id: record.id, item: "prescription"), class: "btn btn-primary" %>
+                      <%= link_to "detalles", record_path(id: record.id, item: "prescription"), class: "btn btn-primary" %>
                       <button type="button" class="btn btn-primary">Descargar</button>
-                  <%else %>
+                  <% else %>
                     <div>
                       <p> No hay archivos por mostrar </p>
                     </div>
@@ -58,5 +59,6 @@
         </div>
       </div>
     </div>
-  </div>
+
 <% end %>
+</div>
