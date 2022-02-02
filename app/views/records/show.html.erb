@@ -1,5 +1,14 @@
 <% if @partial.present?  %>
 <%= render @partial  %>
 <% else   %>
-<%= @record %>
+<%= @record  %>
+<%= link_to "Crear receta", new_record_prescription_path(@record), class: "btn btn-flat" %>
+<%= link_to "Editar receta", edit_record_prescription_path(@record), class: "btn btn-flat" %>
+
+<%= link_to "Crear imagen médica", new_record_medical_image_path(@record), class: "btn btn-flat" %>
+<%= link_to "Editar imagen médica", edit_record_medical_image_path(@record), class: "btn btn-flat" %>
+
+<%= link_to "Crear resultado médico", new_record_medical_result_path(@record), class: "btn btn-flat" %>
+<%= link_to "Editar resultado médico", edit_record_medical_result_path(@record), class: "btn btn-flat" %>
+
 <% end  %>
