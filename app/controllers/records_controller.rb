@@ -48,8 +48,12 @@ class RecordsController < ApplicationController
 
   def update
     authorize @record
-    @record.update(record_params)
-    redirect_to record_path(@record)
+
+    if @record.update(record_params)
+      redirect_to record_path(@record)
+    else
+      render :edit
+    end
   end
 
   private
@@ -59,6 +63,6 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:description, :name, :photo, :photos, :address, :phone)
+    params.require(:record).permit(:appointment, :history, :user_id, :clinic_id)
   end
 end
