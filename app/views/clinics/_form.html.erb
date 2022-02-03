@@ -1,14 +1,17 @@
 <div
   class="view flex-grow-1"
-  style="background-image: url('https://images.unsplash.com/photo-1618674054359-088b66494a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1254&q=80'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+  style="background-image: url('https://images.unsplash.com/photo-1581982231900-6a1a46b744c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
 >
   <div class="container bg-image">
     <div class="col-12 col-md-6 offset-lg-3 ">
-      <div class="bg-white rounded p-3 shadow">
-        <div
+    <div
           class="card-category form"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1505582866941-6788e0205dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1505582866941-6788e0205dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); height: 150px"
         ></div>
+      <div class="bg-white rounded p-3 shadow">
+
+      <div class="h2"> ¡Ingresa los datos de tu clínica!</div>
+
         <br />
         <%= simple_form_for @clinic do |f| %>
           <%= f.error_notification %>
@@ -19,13 +22,13 @@
           <div class="form-inputs form1">
             <%= f.input :name, placeholder: "Hospital" %>
             <%= f.input :description, placeholder: "Descripcion general" %>
-            <%= f.input :address %>
-            <%= f.input :phone %>
+            <%= f.input :address, placeholder: "Av.Los fresnos 123" %>
+            <%= f.input :phone, placeholder: "01 4841362" %>
             <%= f.input :photos %>
             <%= f.input :photo %>
           </div>
-
-          <div class="form-actions">
+            <br>
+          <div class="form-actions d-flex">
             <%= f.button :submit, class: "btn btn-flat" %>
           </div>
         <% end %>
