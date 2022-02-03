@@ -12,5 +12,9 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  def to_label
+    dni.to_s
+  end
+
   validates :user_name, :address, presence: true
 end
