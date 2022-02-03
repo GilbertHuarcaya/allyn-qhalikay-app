@@ -1,16 +1,24 @@
+<div class="container">
 <div class="accordion" id="accordionExample">
 <% @records.each do |record| %>
 
-    <div class="accordion-item">
-      <h2 class="accordion-header" id=<%= "record-heading#{record.id}" %>>
+    <div class="accordion-item d-flex flex-column">
+    <div class="d-flex">
+      <h2 class="accordion-header flex-grow-1" id=<%= "record-heading#{record.id}" %>>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
           <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><%= record.clinic.name %> <%= record.appointment %>
           <br>
         </button>
       </h2>
+      <% if current_user.doctor %>
+      <div class="d-flex align-items-center">
+      <%= link_to "Editar", record_path(record), class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
       <div id=<%= "record-collapse#{record.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{record.id}" %> >
         <div class="accordion-body">
-          <ul>
+        <ul>
           <% if record.medical_images.present? %>
             <li>
               <div class="d-flex justify-content-between">
@@ -67,4 +75,5 @@
     </div>
 
 <% end %>
+</div>
 </div>

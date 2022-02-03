@@ -9,10 +9,10 @@ class MedicalImagesController < ApplicationController
   def create
     @medical_image = MedicalImage.new(medical_image_params)
     @record = Record.find(params[:record_id])
-    @prescription.record = @record
+    @medical_image.record = @record
     authorize @medical_image
     if @medical_image.save
-      redirect_to medical_image_path(@medical_image)
+      redirect_to record_path(@record)
     else
       render :new
     end
@@ -41,6 +41,6 @@ class MedicalImagesController < ApplicationController
   end
 
   def medical_image_params
-    params.require(:record).permit(:title)
+    params.require(:medical_image).permit(:title, :photo)
   end
 end

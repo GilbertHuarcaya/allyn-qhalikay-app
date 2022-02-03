@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     collection do
       get :medical_histories
     end
-    resources :medical_images
-    resources :medical_results
-    resources :prescriptions
+    resources :medical_images, only: [:new, :create]
+    resources :medical_results, only: [:new, :create]
+    resources :prescriptions, only: [:new, :create]
   end
   resources :clinics do
     collection do
