@@ -1,0 +1,6 @@
+<p>Mi casa</p>
+<% if user.photo.present? %>
+  <%= cl_image_tag clinic.photo.key, styles: "height: 10px; width: auto;" %>
+<% else %>
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+<% end %>

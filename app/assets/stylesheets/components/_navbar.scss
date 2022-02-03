@@ -1,12 +1,39 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  min-height: 76px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
 }
 
+.navbar-lewagon-white {
+  background-color: white;
+}
+
+.fixed-only-home {
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar p {
+  margin: auto;
+  color: #ea6460;
+  font-size: 28px;
+  font-weight: bolder;
+  font-family: "Caveat", cursive;
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+  margin-left: 10px;
+  display: flex;
+  margin-right: 20px;
+}
+.navbar-lewagon .navbar-brand {
+  display: flex;
 }

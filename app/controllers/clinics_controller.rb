@@ -17,6 +17,10 @@ class ClinicsController < ApplicationController
         lng: @clinic.longitude,
         info_window: render_to_string(partial: "info_window", locals: { clinic: @clinic }),
         image_url: helpers.asset_url("https://www.svgrepo.com/show/76803/hospital.svg") },
+      { lat: current_user.latitude,
+        lng: current_user.longitude,
+        info_window: render_to_string(partial: "info_window_user", locals: { user: current_user }),
+        image_url: helpers.asset_url("https://www.svgrepo.com/show/57511/home.svg") },
     ]
   end
 

@@ -1,3 +1,13 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1632489031533-62cf8cea9d2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80);">
+  <div class="container">
+    <h1>Revisa tus ultimos <strong>examenes</strong>!</h1>
+    <p>Encuentra tus resultados por fecha</p>
+    <%= form_tag records_path, method: :get do %>
+      <%= date_field_tag :query, params[:query], class: "form-control", placeholder: "Find a clinic" %>
+      <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
+    <% end %>
+  </div>
+</div>
 <div class="container">
 <div class="accordion" id="accordionExample">
 <% @records.each do |record| %>
