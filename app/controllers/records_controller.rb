@@ -10,14 +10,14 @@ class RecordsController < ApplicationController
   end
 
   def show
+    init_medical_data
     authorize @record
     if params[:item] == "medical-image"
       @partial = "records/partials/medical_images"
     elsif params[:item] == "medical-result"
-      @partial =  "records/partials/medical_results"
+      @partial = "records/partials/medical_results"
     elsif params[:item] == "prescription"
-      @partial =  "records/partials/prescriptions"
-
+      @partial = "records/partials/prescriptions"
     end
   end
 
@@ -64,5 +64,11 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(:appointment, :history, :user_id, :clinic_id)
+  end
+
+  def init_medical_data
+    @medical_image = MedicalImage.new
+    @medical_result = MedicalResult.new
+    @prescription = Prescription.new
   end
 end

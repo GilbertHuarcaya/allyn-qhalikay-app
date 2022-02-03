@@ -9,10 +9,10 @@ class MedicalResultsController < ApplicationController
   def create
     @medical_result = MedicalResult.new(medical_result_params)
     @record = Record.find(params[:record_id])
-    @prescription.record = @record
+    @medical_result.record = @record
     authorize @medical_result
     if @medical_result.save
-      redirect_to medical_result_path(@medical_result)
+      redirect_to record_path(@record)
     else
       render :new
     end
@@ -41,6 +41,6 @@ class MedicalResultsController < ApplicationController
   end
 
   def medical_result_params
-    params.require(:record).permit(:title)
+    params.require(:medical_result).permit(:title, :photo)
   end
 end

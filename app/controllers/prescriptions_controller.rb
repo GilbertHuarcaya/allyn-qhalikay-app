@@ -9,9 +9,8 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new(prescription_params)
     @prescription.record = @record
     authorize @prescription
-
     if @prescription.save
-      redirect_to records_path
+      redirect_to record_path(@record)
     else
       render :new
     end
@@ -32,8 +31,6 @@ class PrescriptionsController < ApplicationController
     else
       render :edit
     end
-
-
   end
 
   def show
@@ -42,7 +39,6 @@ class PrescriptionsController < ApplicationController
   private
 
   def prescription_params
-     params.require(:prescription).permit(:title)
+    params.require(:prescription).permit(:title, :photo)
   end
-
 end

@@ -1,14 +1,82 @@
-<% if @partial.present?  %>
-<%= render @partial  %>
-<% else   %>
-<%= @record  %>
-<%= link_to "Crear receta", new_record_prescription_path(@record), class: "btn btn-flat" %>
-<%= link_to "Editar receta", edit_record_prescription_path(@record), class: "btn btn-flat" %>
+<% if @partial.present? %>
+<%= render @partial %>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3>Recetas</h3>
+      <% if @record.prescriptions.empty? %>
+        <small><em class="text-muted">Ninguna receta</em></small>
+      <% end %>
+      <% @record.prescriptions.each do |prescription| %>
+        <div>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(prescription.created_at) %> ago</em></small>
+          <p class="mb-0"><%= prescription.title %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="d-flex justify-content-end rounded p-3">
+        <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_prescription_modal">
+        Crear receta
+      </button>
+      </div>
+    </div>
+  </div>
+  <hr class="my-5">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3>Imágenes Medicas</h3>
+      <% if @record.medical_images.empty? %>
+        <small><em class="text-muted">Ninguna receta</em></small>
+      <% end %>
+      <% @record.medical_images.each do |medical_image| %>
+        <div>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_image.created_at) %> ago</em></small>
+          <p class="mb-0"><%= medical_image.title %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="d-flex justify-content-end rounded p-3">
+      <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_image_modal">
+        Crear imagen médica
+      </button>
+      </div>
+    </div>
+  </div>
+  <hr class="my-5">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3>Resultados Medicos</h3>
+      <% if @record.medical_results.empty? %>
+        <small><em class="text-muted">Ninguna receta</em></small>
+      <% end %>
+      <% @record.medical_results.each do |medical_result| %>
+        <div>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_result.created_at) %> ago</em></small>
+          <p class="mb-0"><%= medical_result.title %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="rounded p-3 d-flex justify-content-end">
+      <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_result_modal">
+        Crear resultado médico
+      </button>
+      </div>
+    </div>
+  </div>
+<%= render "medical_results/new", record: @record %>
+<%= render "medical_images/new", record: @record %>
+<%= render "prescriptions/new", record: @record %>
+</div>
+<% #link_to "Editar receta", edit_record_prescription_path(@record), class: "btn btn-flat" %>
 
-<%= link_to "Crear imagen médica", new_record_medical_image_path(@record), class: "btn btn-flat" %>
-<%= link_to "Editar imagen médica", edit_record_medical_image_path(@record), class: "btn btn-flat" %>
 
-<%= link_to "Crear resultado médico", new_record_medical_result_path(@record), class: "btn btn-flat" %>
-<%= link_to "Editar resultado médico", edit_record_medical_result_path(@record), class: "btn btn-flat" %>
+<% #link_to "Editar imagen médica", edit_record_medical_image_path(@record), class: "btn btn-flat" %>
 
-<% end  %>
+
+<% #link_to "Editar resultado médico", edit_record_medical_result_path(@record), class: "btn btn-flat" %>
+
+<% end %>
