@@ -1,14 +1,11 @@
-<div
-  class="view flex-grow-1"
-  style="background-image: url('https://images.unsplash.com/photo-1618674054359-088b66494a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1254&q=80'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
->
+<div class="view flex-grow-1">
   <div class="container bg-image">
     <div class="col-12 col-md-6 offset-lg-3 ">
       <div class="bg-white rounded p-3 shadow">
         <div
-          class="card-category form"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1505582866941-6788e0205dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)"
-        ></div>
+          class="card-category form d-flex align-items-end"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80); background-size: cover; height: 150px;"
+        ><h1 class="text-white">Crear Clinica</h1></div>
         <br />
         <%= simple_form_for @record do |f| %>
           <%= f.error_notification %>
@@ -18,8 +15,8 @@
 
           <div class="form-inputs form1">
             <%= f.input :appointment, placeholder: "1/08/2021" %>
-            <%= f.input :user_id, placeholder: "13" %>
-            <%= f.input :clinic_id, placeholder: "15" %>
+            <%= f.association :user, collection: User.all.where.not(admin: true).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
+            <%= f.association :clinic, collection: Clinic.all.order(:name), prompt: "Buscar por Nombre", input_html: { class: "select2" } %>
           </div>
 
           <div class="form-actions">

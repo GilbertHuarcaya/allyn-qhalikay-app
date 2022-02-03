@@ -63,7 +63,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:appointment, :history, :user_id, :clinic_id)
+    params.require(:record).permit(:appointment, :history, :user, :clinic)
   end
 
   def init_medical_data

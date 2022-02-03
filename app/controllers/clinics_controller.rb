@@ -58,7 +58,7 @@ class ClinicsController < ApplicationController
   end
 
   def clinic_params
-    params.require(:clinic).permit(:description, :name, :photo, :photos, :address, :phone)
+    params.require(:clinic).permit(:description, :name, :address, :phone, :photo, photos: [])
   end
 
   def set_markers
