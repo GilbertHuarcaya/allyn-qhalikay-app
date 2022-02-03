@@ -1,0 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Questrial&display=swap');
+
+.bg-white{
+  font-family: 'Questrial', sans-serif;
+}
+
+.h2{
+  text-align: center ;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.form-actions{
+  justify-content: center;
+}
+
+.card-category{
+  background-position: center;
+  height: 150px;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.container{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
