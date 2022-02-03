@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 80px;
+}
