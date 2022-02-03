@@ -1,5 +1,4 @@
 // CARDS CONTAINER
-
 .cards-container {
   display: flex;
   justify-content: center;
@@ -85,10 +84,11 @@
     .only-cards {
       padding: 0;
     }
-  }
-  #map {
-    max-width: 100%;
-    max-height: 50vh;
+    #map {
+      width: 100%;
+      max-width: 50rem;
+      max-height: 50vh;
+    }
   }
   .cards {
     grid-template-columns: 1fr;
