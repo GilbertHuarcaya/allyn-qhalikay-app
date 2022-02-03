@@ -4,15 +4,14 @@
 >
   <div class="container bg-image">
     <div class="col-12 col-md-6 offset-lg-3 ">
-    <div
-          class="card-category form"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1505582866941-6788e0205dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); height: 150px"
-        ></div>
       <div class="bg-white rounded p-3 shadow">
-
+         <div
+          class="card-category"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);"
+        ></div>
+         <br />
       <div class="h2"> ¡Ingresa los datos de tu clínica!</div>
-
-        <br />
+          <br />
         <%= simple_form_for @clinic do |f| %>
           <%= f.error_notification %>
           <%= if f.object.errors[:base].present?
@@ -24,7 +23,9 @@
             <%= f.input :description, placeholder: "Descripcion general" %>
             <%= f.input :address, placeholder: "Av.Los fresnos 123" %>
             <%= f.input :phone, placeholder: "01 4841362" %>
+             <br />
             <%= f.input :photos %>
+
             <%= f.input :photo %>
           </div>
             <br>
