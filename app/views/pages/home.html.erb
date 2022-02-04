@@ -16,10 +16,10 @@
       <% end %>
     </div>
     <div class="text-user d-flex flex-column justify-content-center">
-      <h4><strong class="id">Name : </strong><%= current_user.user_name.capitalize %></h4>
+      <h4><strong class="id">Name : </strong><%= current_user.user_name.titleize %></h4>
       <h5><strong class="id">DNI : </strong><%= current_user.dni %></h5>
       <h5><strong class="id">Phone : </strong><%= current_user.phone %></h5>
-      <h5><strong class="id">Address : </strong><%= current_user.address.capitalize %></h5>
+      <h5><strong class="id">Address : </strong><%= current_user.address.titleize %></h5>
     </div>
   </div>
 <% end %>
