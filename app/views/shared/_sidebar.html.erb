@@ -1,0 +1,80 @@
+<div class="modal fade m-0 p-0" style="max-width: 50vw; height: 100vh" id="sidebar-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog m-0 p-0 h-100" role="document">
+    <div class="modal-content h-100">
+      <div class="py-3 px-1 bg-white m-0 p-0 h-100">
+        <button type="button" class="close mr-3" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= link_to "/", class: "d-flex align-items-center pb-1 mb-1 link-dark text-decoration-none border-bottom" do %>
+          <p class="fs-5 fw-semibold navbar-logo">AllynQhalikay</p>
+        <% end %>
+        <ul class="list-unstyled ps-0">
+      <% if user_signed_in? %>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+              Home
+            </button>
+            <div class="collapse show" id="home-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%= link_to "Historial medico", medical_histories_records_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Resultados medicos", records_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Centros medicos", clinics_path, class: "link-dark rounded" %></li>
+              </ul>
+            </div>
+          </li>
+          <% if current_user.admin %>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+              Historial
+            </button>
+            <div class="collapse" id="dashboard-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" class="link-dark rounded">Completo</a></li>
+                <li><a href="#" class="link-dark rounded">Semanal</a></li>
+                <li><a href="#" class="link-dark rounded">Mensual</a></li>
+                <li><a href="#" class="link-dark rounded">Anual</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+              Administrador
+            </button>
+            <div class="collapse" id="orders-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%= link_to "Clinicas", clinics_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Crear clinica", new_clinic_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Crear registro", new_record_path, class: "link-dark rounded" %></li>
+              </ul>
+            </div>
+          </li>
+          <% end %>
+          <li class="border-top my-3"></li>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+        <% if current_user.photo.key === nil %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "dropdownUser", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "dropdownUser", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+            </button>
+            <div class="collapse" id="account-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%= link_to "Editar usuario", edit_user_registration_path, class: "dropdown-item" %></li>
+                <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "btn link-dark rounded" %>
+        </li>
+      <% end %>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>

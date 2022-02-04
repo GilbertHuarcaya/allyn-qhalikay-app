@@ -1,7 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80);">
   <div class="container">
-    <h1>Revisa tus ultimos <strong>resultados</strong> desde la comodidad de tu hogar!</h1>
-    <p>Encuentra tus resultados por fecha</p>
+    <h1>Aqui estan tus exámenes generales e historial médico!</h1>
+    <p>Encuentralos por fecha</p>
     <%= form_tag records_path, method: :get do %>
       <%= date_field_tag :query, params[:query], class: "form-control", placeholder: "por fecha" %>
       <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>

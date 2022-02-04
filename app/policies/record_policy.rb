@@ -9,6 +9,10 @@ class RecordPolicy < ApplicationPolicy
     return true
   end
 
+  def medical_histories?
+    return true
+  end
+
   def show?
     return true
   end

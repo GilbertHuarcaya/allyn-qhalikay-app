@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Agregar una Receta</h5>
+        <h5 class="modal-title">Agregar receta</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,12 +15,12 @@
               end %>
 
           <div class="form-inputs form1">
-            <%= f.input :title, placeholder: "Receta gripe" %>
-            <%= f.input :photo %>
+            <%= f.input :title, label: "Nombre del archivo", placeholder: "Receta-0000" %>
+            <%= f.input :photo, label: "Archivo o imagen", as: :file %>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, class: "btn btn-flat" %>
+            <%= f.button :submit, value: "Agregar", class: "btn btn-flat" %>
           </div>
         <% end %>
       </div>

@@ -1,9 +1,9 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1632489031533-62cf8cea9d2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3072&q=80);">
   <div class="container">
     <h1>Reserva tu <strong>cita</strong>!</h1>
     <p>Encuentra el centro de salud mas cercano, a una llamada</p>
-    <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a clinic" %>
+    <%= form_tag clinics_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Busca un centro de salud" %>
       <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
     <% end %>
   </div>
@@ -31,9 +31,9 @@
                         max-width: 30ch;"><%= clinic.description %></p>
               <p>ubicado en: <%= clinic.address %></p>
             </div>
-            <h2 class="card-trip-pricing">Open</h2>
+            <h2 class="card-trip-pricing">Abierto</h2>
             <% if clinic.photo.attached? %>
-              <%= cl_image_tag clinic.photo.key, class: "card-trip-user avatar-bordered" %>
+              <%= cl_image_tag clinic.photo.key, style: "width: 40px; height: 40px; object-fit: cover;", class: "card-trip-user avatar-bordered" %>
             <% else %>
              <%= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "card-trip-user avatar-bordered" %>
             <% end %>
