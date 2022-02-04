@@ -5,8 +5,10 @@
 </head>
 
 <div class = "container">
+<% if user_signed_in? %>
   <div class=" card user-info">
     <div class="user-home ">
+
       <% if current_user.photo.key === nil %>
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% else %>
@@ -20,7 +22,7 @@
       <h5><strong class="id">Address : </strong><%= current_user.address.capitalize %></h5>
     </div>
   </div>
-
+<% end %>
 
 
   <div class="card-deck gap-2">
