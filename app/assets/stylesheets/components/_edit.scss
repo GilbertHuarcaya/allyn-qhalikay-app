@@ -1,0 +1,56 @@
+.form-inputs input {
+  border-radius: 25px;
+  border: 1px solid rgb(75, 73, 73);
+}
+
+.container-edit {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid black;
+  border-radius: 30px
+}
+
+.card-edit h2 {
+  text-align: center;
+}
+
+.card-edit {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 30px 0px 0px 30px;
+}
+
+.card-pic {
+  background-color: #add8f367;
+  width: 500px;
+  border-radius: 0px 30px 30px 0px;
+  text-align: center;
+}
+
+.card-pic img {
+  height: 600px;
+  padding: 40px;
+  margin-left: 38px;
+  margin-right: 40px;
+}
+
+.card-pic h2 {
+  margin-top: 50px;
+  width: 190px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.form-control-is-valid {
+  border-radius: 25px;
+}
+
+.short {
+  grid-gap: 17px;
+}
