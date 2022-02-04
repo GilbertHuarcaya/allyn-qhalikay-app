@@ -1,4 +1,8 @@
 // CARDS CONTAINER
+.container {
+  flex-grow: 1;
+}
+
 .cards-container {
   display: flex;
   justify-content: center;
