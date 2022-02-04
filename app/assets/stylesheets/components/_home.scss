@@ -138,7 +138,8 @@ body {
 
 #one {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-image: url(https://www.todaysrdh.com/wp-content/uploads/2018/02/dental-hygiene-health-history.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://www.todaysrdh.com/wp-content/uploads/2018/02/dental-hygiene-health-history.png);
   background-size: 500px 300px;
   transform: scale(1);
   transition: all 0.3s;
@@ -146,7 +147,8 @@ body {
 
 #two {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-image: url(https://www.torontohomecareassistance.ca/wp-content/uploads/2020/03/Senior-with-Doctor.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://www.torontohomecareassistance.ca/wp-content/uploads/2020/03/Senior-with-Doctor.jpg);
   background-size: 500px 300px;
   transition: all 0.3s;
 }
@@ -170,7 +172,7 @@ body {
   opacity: 0;
   transition: 0.5s ease;
   background-color: #00000070;
-  opacity: 0.5;
+  opacity: 0.9;
   border-radius: 15px;
 }
 
