@@ -12,7 +12,7 @@
       <div class="bg-white mx-auto sesion-form border border-dark">
         <br>
         <div class="d-flex align-items-center justify-content-between headers-form">
-          <h5>Ingresar</h5>
+          <h5>Ingresa</h5>
           <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-link register" %><br />
         </div>
           <br>
@@ -20,16 +20,18 @@
           <div class="form-inputs inputs-sesion sesion-miniform">
             <%= f.input :email,
                         required: false,
+                        label: "Correo/email",
                         autofocus: true,
                         input_html: { autocomplete: "email" } %>
             <%= f.input :password,
                         required: false,
+                        label: "Contraseña",
                         input_html: { autocomplete: "current-password" } %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
 
             <div class="form-actions btn btn-success button">
-              <%= f.button :submit, "Log in" %>
+              <%= f.button :submit, "Ingresar" %>
             </div>
             <br>
         <% end %>
