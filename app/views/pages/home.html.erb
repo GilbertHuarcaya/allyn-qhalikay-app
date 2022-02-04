@@ -12,7 +12,7 @@
       <% if current_user.photo.key === nil %>
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% else %>
-      <%= cl_image_tag current_user.photo.key, crop: :fill, id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <%= cl_image_tag current_user.photo.key, style: "width: 12rem; height: 12rem; object-fit: cover", crop: :fill, id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
     </div>
     <div class="text-user d-flex flex-column justify-content-center">
