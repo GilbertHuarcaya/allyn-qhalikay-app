@@ -22,11 +22,27 @@
 .footer-links a:hover {
   opacity: 1;
 }
+.red-s {
+  padding: 0 10px;
+}
 
 @media (min-width: 100px) and (max-width: 575px) {
   footer {
     .navbar-logo {
       width: 100px;
+    }
+    p {
+      max-width: 40vw;
+      font-size: 0.8rem;
+    }
+    .redes-sociales {
+      width: 60%;
+      .col {
+        padding: 0;
+        .red-s {
+          padding: 0 5px;
+        }
+      }
     }
   }
   .row {
