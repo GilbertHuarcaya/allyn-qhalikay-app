@@ -7,6 +7,7 @@
   padding: 0px 50px;
   color: rgba(0, 0, 0, 0.3);
 }
+
 .footer-links {
   display: flex;
   align-items: center;
@@ -21,6 +22,19 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
-  color: #d23333;
+
+@media (min-width: 100px) and (max-width: 575px) {
+  footer {
+    .navbar-logo {
+      width: 100px;
+    }
+  }
+  .row {
+    .col h5 {
+      font-size: 1rem;
+    }
+    .col ul {
+      font-size: 0.8rem;
+    }
+  }
 }
