@@ -1,8 +1,12 @@
 //card new
 body {
-  background: linear-gradient(rgba(255, 255, 255, 0.645),
-      rgba(315, 212, 707, 0.45)),
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.645),
+      rgba(315, 212, 707, 0.45)
+    ),
     url(https://flevix.com/wp-content/uploads/2019/12/Live-Background-1.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -19,29 +23,29 @@ body {
 }
 
 .text-user {
-  padding: 20px;
   justify-content: left;
-  font-family: 'Kanit',
-    sans-serif;
+  font-family: "Kanit", sans-serif;
   text-align: left;
 }
 
-.card h2 a {
-  font-size: 30px;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-family: 'Kanit', sans-serif;
-  text-align: center;
-  padding-top: 120px;
-  padding-left: 50px;
-  padding-right: 50px;
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Kanit", sans-serif;
+  }
 }
-
-
 
 .card.user-info {
   height: 250px;
-  width: 600px;
+  width: 100%;
+  max-width: 700px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -54,7 +58,6 @@ body {
   flex-direction: row;
 }
 
-
 .id {
   color: #2c274f;
   margin-right: 10px;
@@ -66,7 +69,6 @@ body {
   align-items: center;
 }
 
-
 .card {
   margin-bottom: 50px;
   width: 240px;
@@ -77,8 +79,6 @@ body {
   padding: 30px;
   display: flex;
   padding-top: 120px;
-
-
 
   .desc {
     font-size: 15px;
@@ -95,11 +95,9 @@ body {
     font-weight: bold;
     text-decoration: none;
     position: absolute;
-
   }
 
   &:hover {
-
     .desc {
       opacity: 1;
       transform: none;
@@ -117,15 +115,12 @@ body {
   transition: all 0.3s;
 }
 
-
 #two {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   background-image: url(https://www.torontohomecareassistance.ca/wp-content/uploads/2020/03/Senior-with-Doctor.jpg);
   background-size: 500px 300px;
   transition: all 0.3s;
 }
-
-
 
 #three {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -134,7 +129,6 @@ body {
   background-size: 500px 300px;
   transition: all 0.3s;
 }
-
 
 .overlay {
   position: absolute;
@@ -145,7 +139,7 @@ body {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .5s ease;
+  transition: 0.5s ease;
   background-color: #00000070;
   opacity: 0.5;
   border-radius: 15px;
