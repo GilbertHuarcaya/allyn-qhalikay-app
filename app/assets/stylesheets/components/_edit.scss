@@ -9,7 +9,7 @@
   margin-top: 40px;
   margin-bottom: 40px;
   border: 1px solid black;
-  border-radius: 30px
+  border-radius: 30px;
 }
 
 .card-edit h2 {
@@ -44,7 +44,6 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .form-control-is-valid {
@@ -53,4 +52,29 @@
 
 .short {
   grid-gap: 17px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .container-edit {
+    max-width: 100%;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 30px;
+    .card-edit {
+      border-radius: 30px;
+    }
+    .card-pic {
+      border-radius: 30px;
+      max-width: 100%;
+      h2 {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
+      img {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
 }
