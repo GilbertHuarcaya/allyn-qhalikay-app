@@ -9,6 +9,15 @@ class RecordsController < ApplicationController
     end
   end
 
+  def medical_histories
+    if params[:query].present?
+      @records = policy_scope(Record).where(user: current_user, history: true).search_by_date(params[:query])
+    else
+      @records = policy_scope(Record).where(user: current_user, history: true).order(created_at: :desc)
+    end
+    authorize @records
+  end
+
   def show
     init_medical_data
     authorize @record
@@ -63,7 +72,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:appointment, :history, :user, :clinic)
+    params.require(:record).permit(:appointment, :history, :user_id, :clinic_id)
   end
 
   def init_medical_data

@@ -5,7 +5,14 @@ class Clinic < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  def to_label
+    "#{name}-#{address}"
+  end
+
   validates :description, :name, :address, :phone, presence: true
+  validates :description, length: { minimum: 6 }
+  validates :phone, uniqueness: true
+  validates :address, uniqueness: true
   include PgSearch::Model
   pg_search_scope :search_by_address_and_name,
                   against: [:address, :name],

@@ -10,6 +10,7 @@
             class="card-category form d-flex align-items-end "
             style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1599045118108-bf9954418b76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80); background-size: cover; height: 150px;"
           ></div>
+          <br>
           <h2 class="text-black text-center">Crea el nuevo registro</h2>
           <br />
           <%= simple_form_for @record do |f| %>
@@ -19,16 +20,18 @@
                 end %>
 
             <div class="form-inputs form1">
-              <%= f.input :appointment, placeholder: "1/08/2021" %>
-              <%= f.association :user, collection: User.all.where.not(admin: true).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
-              <%= f.association :clinic, collection: Clinic.all.order(:name), prompt: "Buscar por Nombre", input_html: { class: "select2" } %>
+              <%= f.input :appointment, label: "Fecha de exámen medico", placeholder: "1/08/2021" %>
+              <%= f.association :user, label: "Dni del paciente", collection: User.all.where.not(admin: true).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
+              <%= f.association :clinic, label: "Nombre del Centro de Salud", collection: Clinic.all.order(:name), prompt: "Buscar por Nombre", input_html: { class: "select2" } %>
+              <%= f.input :history, label: "¿Es Historial médico?" %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, class: "btn btn-flat" %>
+              <%= f.button :submit, value: "Crear registro", class: "btn btn-flat" %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
