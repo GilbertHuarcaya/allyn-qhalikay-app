@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Merriweather:wght@300&family=Open+Sans:wght@300&family=Roboto+Mono:wght@300&display=swap');
+
+.resultados-sin-vinetas {
+  margin-bottom: 0px;
+   li {
+     list-style-type: none;
+   }
+   h2 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+    margin: 0px;
+  }
+  .espaciado {
+    margin: 5px 0px;
+    .width-images-results {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    border-radius: 5px;
+  }
+  .btn-light {
+    color: #18A0FB;
+    border-color: #18A0FB;
+    margin-right: 35px;
+  }
+}
+
+.font-accordion {
+  font-family: 'Comfortaa', cursive;
+  font-size: 23px;
+  align-items: center;
+  .fecha {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-left: 20px;
+    color: #0E6DAD;
+  }
+}
