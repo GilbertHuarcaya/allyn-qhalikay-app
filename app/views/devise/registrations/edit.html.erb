@@ -1,21 +1,25 @@
+<div class="container-edit d-flex">
+<div class = "card-edit"><h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+  <div class="form-inputs">
+  <div class="short d-flex ">
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :user_name, required: true, autofocus: true %>
+    </div>
+    <div class="short d-flex ">
+    <%= f.input :dni, required: true, autofocus: true %>
+    <%= f.input :phone, required: true, autofocus: true %>
+    </div>
+    <%= f.input :address, required: true, autofocus: true %>
+    <%= f.input :photo, required: false %>
 
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :user_name, required: true, autofocus: true %>
-      <%= f.input :dni, required: true, autofocus: true %>
-      <%= f.input :phone, required: true, autofocus: true %>
-      <%= f.input :address, required: true, autofocus: true %>
-      <%= f.input :photo, required: false %>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+    <div class="short d-flex ">
       <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
                   required: false,
@@ -23,19 +27,28 @@
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
+    </div>
       <%= f.input :current_password,
                   hint: "we need your current password to confirm your changes",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-    </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Update" %>
-    </div>
-  <% end %>
+  </div>
 
-  <h3>Cancel my account</h3>
+   <div class="short d-flex mb-3 ">
+  <div class="form-actions">
+    <%= f.button :submit, "Update" , class: "btn btn-success"%>
+  </div>
+<% end %>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Back", :back, class:"btn btn-success" %>
+</div>
 
-  <%= link_to "Back", :back %>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+</div>
+<div class="card-pic">
+<h2>¡ Hello <strong><%= current_user.user_name.capitalize %></strong> !</h2>
+<img src="https://clinicadoctorespejo.com/wp-content/uploads/2020/06/doctor-png.png" alt="salud">
+</div>
+</div>

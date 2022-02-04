@@ -1,2 +1,54 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<div class = "container">
+<% if user_signed_in? %>
+  <div class=" card user-info">
+    <div class="user-home ">
+
+      <% if current_user.photo.key === nil %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+    </div>
+    <div class="text-user d-flex flex-column justify-content-center">
+      <h4><strong class="id">Name : </strong><%= current_user.user_name.capitalize %></h4>
+      <h5><strong class="id">DNI : </strong><%= current_user.dni %></h5>
+      <h5><strong class="id">Phone : </strong><%= current_user.phone %></h5>
+      <h5><strong class="id">Address : </strong><%= current_user.address.capitalize %></h5>
+    </div>
+  </div>
+<% end %>
+
+
+  <div class="card-deck gap-2">
+
+    <div class="card m-auto" id="one">
+      <div class="overlay">
+          <%= link_to "• HISTORIA MEDICA • ", medical_histories_records_path, class: "tittle" %>
+          <div class="desc">Tu historia medica personal tiene detalles de los exámenes generales que te hayas tomado.</div>
+      </div>
+    </div>
+
+    <div class="card m-auto" id="three">
+      <div class="overlay">
+          <%= link_to " • REGISTROS MEDICOS • ", records_path %>
+          <div class="desc">Tu registro medico personal tiene detalles de tu salud por fecha.</div>
+      </div>
+    </div>
+
+    <div class="card m-auto" id="two">
+      <div class="overlay">
+          <%= link_to " • CLINICAS • ", clinics_path %>
+          <div class="desc">Busca a los mejores medicos y especialistas de entre nuestros centros medicos afiliados.</div>
+      </div>
+    </div>
+
+    </div>
+
+
+</div>
