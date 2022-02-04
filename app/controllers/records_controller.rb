@@ -9,15 +9,24 @@ class RecordsController < ApplicationController
     end
   end
 
+  def medical_histories
+    if params[:query].present?
+      @records = policy_scope(Record).where(user: current_user, history: true).search_by_date(params[:query])
+    else
+      @records = policy_scope(Record).where(user: current_user, history: true).order(created_at: :desc)
+    end
+    authorize @records
+  end
+
   def show
+    init_medical_data
     authorize @record
     if params[:item] == "medical-image"
       @partial = "records/partials/medical_images"
     elsif params[:item] == "medical-result"
-      @partial =  "records/partials/medical_results"
+      @partial = "records/partials/medical_results"
     elsif params[:item] == "prescription"
-      @partial =  "records/partials/prescriptions"
-
+      @partial = "records/partials/prescriptions"
     end
   end
 
@@ -48,8 +57,12 @@ class RecordsController < ApplicationController
 
   def update
     authorize @record
-    @record.update(record_params)
-    redirect_to record_path(@record)
+
+    if @record.update(record_params)
+      redirect_to record_path(@record)
+    else
+      render :edit
+    end
   end
 
   private
@@ -59,6 +72,12 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:description, :name, :photo, :photos, :address, :phone)
+    params.require(:record).permit(:appointment, :history, :user_id, :clinic_id)
+  end
+
+  def init_medical_data
+    @medical_image = MedicalImage.new
+    @medical_result = MedicalResult.new
+    @prescription = Prescription.new
   end
 end

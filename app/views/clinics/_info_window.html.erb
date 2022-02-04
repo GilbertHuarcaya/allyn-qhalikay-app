@@ -1,3 +1,8 @@
-<h2><%= clinic.name %></h2>
-<p><%= clinic.address %></p>
 
+<h2><%= link_to clinic.name, clinic_path(clinic) %></h2>
+<p><%= clinic.address %></p>
+<% if clinic.photo.present? %>
+  <%= cl_image_tag clinic.photo.key, class: "h-50 w-50", styles: "height: 10px; width: auto;" %>
+<% else %>
+  <img src="https://source.unsplash.com/1600x900/?office/<%= rand(1..30) %>" class="h-50 w-50" styles="height: 10px; width: auto;" />
+<% end %>

@@ -1,0 +1,9 @@
+.book-card {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .book-card {
+    margin-top: -120px;
+  }
+}
