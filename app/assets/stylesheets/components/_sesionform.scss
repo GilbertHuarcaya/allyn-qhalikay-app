@@ -32,6 +32,8 @@
   margin-right: 500px;
   text-align: center;
   justify-content: center;
+  margin-bottom: 0px;
+  align-items: center;
 }
 
 .background-sesion {
@@ -45,6 +47,10 @@
 
 .welcome-text {
   text-align: center;
+}
+
+.h5-form{
+margin-bottom: 0px;
 }
 
 @media (min-width: 768px) {
@@ -66,3 +72,4 @@
     z-index: 998;
   }
 }
+
