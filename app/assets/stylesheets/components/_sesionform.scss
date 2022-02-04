@@ -3,7 +3,9 @@
 }
 
 .sesion-form {
-  border-radius: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 40rem;
 }
 
 .headers-form {
@@ -43,4 +45,11 @@
 
 .welcome-text {
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sesion-form {
+    border-radius: 25px;
+    width: 75%;
+  }
 }
