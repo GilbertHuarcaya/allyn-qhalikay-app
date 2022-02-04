@@ -18,7 +18,7 @@
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
           <div class="d-flex font-accordion">
             <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital">
-              <span><%= record.clinic.name %></span><span class="fecha">Fecha de Atención: <%= record.appointment %></span>
+              <span><%= record.clinic.name.titleize %></span><span class="fecha">Fecha de Atención: <%= record.appointment %></span>
 
           </div>
         </button>
