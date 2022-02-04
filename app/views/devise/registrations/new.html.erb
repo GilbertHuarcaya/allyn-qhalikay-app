@@ -1,54 +1,80 @@
-<h2>Sign up</h2>
+<div class="background-sesion">
+  <div class="row m-0" style="max-width: 100% ">
+    <div class="col-12 col-md-6 p-0 m-0 d-flex flex-column justify-content-center align-items-center"  >
+      <div class ="background-sesion-image" style="background-image: url('https://cdni.iconscout.com/illustration/premium/thumb/doctor-checking-baby-girl-4047414-3351729.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" ></div>
+        <div class="welcome-text">
+          <h1>QHALIKAY APP</h1>
+          <p>Bienvenido a QHALIKAY, una aplicacion de salud para <br>llevar tus documentos clinicos a cualquier lugar.</p>
+        </div>
+    </div>
+    <div class="col d-flex flex-column justify-content-center align-items-center">
+      <div class="bg-white mx-auto sesion-form border border-dark">
+<br>
+        <div class="d-flex align-items-center justify-content-between headers-form">
+          <h5>Registrate</h5>
+          <%= link_to "Ingresar", new_user_session_path, class: "btn btn-link register" %><br />
+        </div>
+<br>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs inputs-sesion sesion-miniform">
+            <%= f.input :email,
+                        required: true,
+                        label: "Correo/email",
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :user_name,
+                        placeholder: "Marcela Soriana Palacios Matias",
+                        required: true,
+                        label: "Nombres y apellidos",
+                        autofocus: true,
+                        input_html: {
+                          autocomplete: "nombre completo",
+                        } %>
+            <%= f.input :dni,
+                        placeholder: "00000000",
+                        required: true,
+                        label: "DNI",
+                        autofocus: true,
+                        input_html: {
+                          autocomplete: "dni",
+                        } %>
+            <%= f.input :phone,
+                        placeholder: "+51999999999",
+                        required: true,
+                        label: "Teléfono",
+                        autofocus: true,
+                        input_html: {
+                          autocomplete: "dni",
+                        } %>
+            <%= f.input :address,
+                        placeholder: "Calle los algarrobos Lima Perú",
+                        required: true,
+                        label: "Dirección",
+                        autofocus: true,
+                        input_html: {
+                          autocomplete: "dirección",
+                        } %>
+            <%= f.input :photo, label: "Foto personal", required: false, id: "input-photo" %>
+            <%= f.input :password,
+                        required: true,
+                        label: "Contraseña",
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        label: "Repetir contraseña",
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+          </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :user_name,
-                placeholder: "Marcela Soriana Palacios Matias",
-                required: true,
-                autofocus: true,
-                input_html: {
-                  autocomplete: "nombre completo",
-                } %>
-    <%= f.input :dni,
-                placeholder: "00000000",
-                required: true,
-                autofocus: true,
-                input_html: {
-                  autocomplete: "dni",
-                } %>
-    <%= f.input :phone,
-                placeholder: "+51999999999",
-                required: true,
-                autofocus: true,
-                input_html: {
-                  autocomplete: "dni",
-                } %>
-    <%= f.input :address,
-                placeholder: "Calle los algarrobos Lima Perú",
-                required: true,
-                autofocus: true,
-                input_html: {
-                  autocomplete: "dirección",
-                } %>
-    <%= f.input :photo, required: false %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+              <%= f.button :submit, "Registrarse", class: "btn btn-success signup-button mb-4" %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+      </div>
 
-<%= render "devise/shared/links" %>
+        <% end %>
+
+      </div>
+    </div>
+
+</div>
