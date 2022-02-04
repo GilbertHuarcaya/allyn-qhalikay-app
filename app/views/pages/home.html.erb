@@ -1,2 +1,55 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header></header>
+   <div class = "container">
+
+     <div class=" card user-info">
+       <div class="user-home ">
+         <% if current_user.photo.key === nil %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+         <% else %>
+          <%= cl_image_tag current_user.photo.key, crop: :fill, id: "avatar-home", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+         <% end %>
+       </div>
+       <div class="text-user">
+        <h4><strong class="id">Name : </strong><%= current_user.user_name.capitalize %></h4>
+        <h5><strong class="id">DNI : </strong><%=current_user.dni  %></h5>
+        <h5><strong class="id">Phone : </strong><%=current_user.phone %></h5>
+       <h5><strong class="id">Address : </strong><%=current_user.address.capitalize %></h5>
+       </div>
+     </div>
+
+
+
+      <div class="card-deck">
+
+        <div class="card" id="one">
+          <div class="overlay">
+              <h2><%= link_to "• MEDICAL HISTORY • ", records_path ,class: "tittle"%></h2>
+              <div class="desc">Your personal health history has details about any health problems you've ever had.</div>
+          </div>
+        </div>
+
+        <div class="card" id="two">
+          <div class="overlay">
+              <h2> <%= link_to " • MEDICAL APPOINTMENTS • ", clinics_path%></h2>
+              <div class="desc">Search for the best doctors and specialists in all our affiliated health centers.</div>
+          </div>
+        </div>
+
+        <div class="card" id="three">
+          <div class="overlay">
+              <h2><%= link_to " • YOUR RECORDS • ", records_path %></h2>
+              <div class="desc">Your personal health history has details about any health problems you've ever had.</div>
+          </div>
+        </div>
+
+        </div>
+
+
+   </div>
+</body>
