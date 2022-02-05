@@ -22,13 +22,14 @@
       <h5><strong class="id">Dirección : </strong><%= current_user.address.titleize %></h5>
     </div>
   </div>
+<% else %>
+    <div class="card-main">
+      <img  src="https://qhalikay.qolkex.org/img/logo.png" alt="qhalikay">
+        <h4><strong>"TU SALUD Y BIENESTAR SIEMPRE ONLINE"</strong></h4>
+        <%= link_to "Empezar", new_user_session_path, class: "nav-link", class: "btn btn-primary mr-3" %>
+    </div>
 <% end %>
 
-<div class="card-main">
-   <img  src="https://qhalikay.qolkex.org/img/logo.png" alt="qhalikay">
-    <h4><strong>"TU SALUD Y BIENESTAR SIEMPRE ONLINE"</strong></h4>
-    <%= link_to "Empezar", new_user_session_path, class: "nav-link", class:"btn btn-primary mr-3" %>
-</div>
 
   <div class="card-deck gap-3">
 
