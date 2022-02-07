@@ -26,7 +26,6 @@ class RecordsController < ApplicationController
       @records = policy_scope(Record).order(created_at: :desc)
     end
     authorize @records
-
   end
 
   def show
@@ -39,8 +38,6 @@ class RecordsController < ApplicationController
     elsif params[:item] == "prescription"
       @partial = "records/partials/prescriptions"
     end
-
-
   end
 
   def new
@@ -52,7 +49,10 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     authorize @record
     if @record.save
-      redirect_to record_path(@record)
+      ActionCable.server.broadcast(
+        "record_channel",
+        { data: render_to_string(partial: "record", locals: { record: @record }), user: @record.user_id }
+      )
     else
       render :new
     end

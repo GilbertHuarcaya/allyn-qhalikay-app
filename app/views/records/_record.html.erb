@@ -1,18 +1,5 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80);">
-  <div class="container">
-    <h1>Revisa tus ultimos <strong>resultados</strong> desde la comodidad de tu hogar!</h1>
-    <p>Encuentra tus resultados por fecha</p>
-    <%= form_tag records_path, method: :get do %>
-      <%= date_field_tag :query, params[:query], class: "form-control", placeholder: "por fecha" %>
-      <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
-    <% end %>
-  </div>
-</div>
-<div class="container">
-<div class="accordion" id=<%="records-user-#{current_user.id}"%>>
-<% @records.each do |record| %>
 
-    <div class="accordion-item d-flex flex-column">
+    <div class="accordion-item d-flex flex-column" id="record-<%= record.id %>">
     <div class="d-flex">
       <h2 class="accordion-header flex-grow-1" id=<%= "record-heading#{record.id}" %>>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
@@ -23,11 +10,6 @@
           </div>
         </button>
       </h2>
-      <% if current_user.doctor %>
-      <div class="d-flex align-items-center btn-back-color">
-      <%= link_to "Editar", record_path(record), class: "btn btn-primary" %>
-      </div>
-      <% end %>
     </div>
       <div id=<%= "record-collapse#{record.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{record.id}" %> >
         <div class="accordion-body">
@@ -87,7 +69,3 @@
         </div>
       </div>
     </div>
-
-<% end %>
-</div>
-</div>
