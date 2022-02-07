@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="container">
-<div class="accordion" id="records">
+<div class="accordion" id=<%="records-user-#{current_user.id}"%>>
 <% @records.each do |record| %>
 
     <div class="accordion-item d-flex flex-column">

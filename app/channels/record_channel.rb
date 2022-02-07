@@ -1,7 +1,7 @@
 class RecordChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    stream_for record_channel
+    stream_from "record_channel"
   end
 
   def unsubscribed
