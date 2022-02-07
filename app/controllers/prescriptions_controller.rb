@@ -9,11 +9,8 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new(prescription_params)
     @prescription.record = @record
     authorize @prescription
-    if @prescription.save
-      redirect_to record_path(@record)
-    else
-      render :new
-    end
+    @prescription.save
+    redirect_to record_path(@record)
   end
 
   def edit

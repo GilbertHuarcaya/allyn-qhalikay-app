@@ -11,11 +11,9 @@ class MedicalResultsController < ApplicationController
     @record = Record.find(params[:record_id])
     @medical_result.record = @record
     authorize @medical_result
-    if @medical_result.save
-      redirect_to record_path(@record)
-    else
-      render :new
-    end
+    @medical_result.save
+    redirect_to record_path(@record)
+
   end
 
   def destroy

@@ -1,2 +1,45 @@
+<div
+  class="view flex-grow-1"
+  style="background-image: url('https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80'); background-repeat: no-repeat; background-size: cover; background-position:center;"
+>
+  <div class="view flex-grow-1">
+    <div class="container bg-image">
+      <div class="col-12 col-md-6 offset-lg-3 ">
 
-<%= render "form", record: @record %>
+
+
+  <div class="profile-tabs">
+    <ul
+      class="nav nav-pills nav-pills-icons justify-content-center"
+      role="tablist"
+    >
+      <li class="nav-item bg-white m-1">
+        <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+          <i class="far fa-edit icon-size"></i>
+          <span>Exámen Médico ambulatorio</span>
+        </a>
+      </li>
+      <li class="nav-item bg-white m-1">
+        <a class="nav-link" href="#studio" role="tab" data-toggle="tab">
+          <i class="far fa-edit icon-size"></i>
+          <span>Checkeo Médico General</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tab-content tab-space">
+    <div class="tab-pane" id="studio">
+      <%= render "form-new-general", record: @record %>
+    </div>
+    <div class="tab-pane " id="favorite">
+      <%= render "form", record: @record %>
+    </div>
+  </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
