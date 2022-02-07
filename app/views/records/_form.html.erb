@@ -7,7 +7,7 @@
           <br>
           <h2 class="text-black text-center">Crea el nuevo registro de Exámen Médico ambulatorio</h2>
           <br />
-          <%= simple_form_for @record do |f| %>
+          <%= simple_form_for @record, remote: true do |f| %>
             <%= f.error_notification %>
             <%= if f.object.errors[:base].present?
                   f.error_notification message: f.object.errors[:base].to_sentence

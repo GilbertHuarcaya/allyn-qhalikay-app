@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [@record, @prescription] do |f| %>
+        <%= simple_form_for [@record, @prescription], remote: true do |f| %>
           <%= f.error_notification %>
           <%= if f.object.errors[:base].present?
                 f.error_notification message: f.object.errors[:base].to_sentence
