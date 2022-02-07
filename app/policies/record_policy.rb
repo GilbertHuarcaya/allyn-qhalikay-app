@@ -13,6 +13,10 @@ class RecordPolicy < ApplicationPolicy
     return true
   end
 
+  def patients_records?
+    user.doctor
+  end
+
   def show?
     return true
   end

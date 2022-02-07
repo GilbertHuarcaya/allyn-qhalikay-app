@@ -18,6 +18,17 @@ class RecordsController < ApplicationController
     authorize @records
   end
 
+  def patients_records
+    if params[:query].present?
+      @user = policy_scope(User).where(dni: params[:query])
+      @records = policy_scope(Record).where(user_id: @user[0].id)
+    else
+      @records = policy_scope(Record).order(created_at: :desc)
+    end
+    authorize @records
+
+  end
+
   def show
     init_medical_data
     authorize @record
@@ -28,6 +39,8 @@ class RecordsController < ApplicationController
     elsif params[:item] == "prescription"
       @partial = "records/partials/prescriptions"
     end
+
+
   end
 
   def new
