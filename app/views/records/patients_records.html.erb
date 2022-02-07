@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80);">
   <div class="container">
     <h1>¡Busca los registros médicos de los pacientes!</h1>
     <p>Encuentralos solo con el DNI</p>
@@ -11,30 +11,37 @@
 <div class="container">
 <div class="accordion" id="accordionExample">
 <% @records.each do |record| %>
+
     <div class="accordion-item d-flex flex-column">
     <div class="d-flex">
       <h2 class="accordion-header flex-grow-1" id=<%= "record-heading#{record.id}" %>>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
-          <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><%= record.clinic.name %> <%= record.appointment %> <%= record.user.dni %>
-          <br>
+          <div class="d-flex font-accordion">
+            <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital">
+            <%= record.clinic.name.titleize %>
+            <span class="fecha">Fecha de Atención: <%= record.appointment %></span>
+            <span class="fecha">Dni: <%= record.user.dni %></span>
+            <br>
+
+          </div>
         </button>
       </h2>
       <% if current_user.doctor %>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center btn-back-color">
       <%= link_to "Editar", record_path(record), class: "btn btn-primary" %>
       </div>
       <% end %>
     </div>
       <div id=<%= "record-collapse#{record.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{record.id}" %> >
         <div class="accordion-body">
-        <ul>
+        <ul class="resultados-sin-vinetas">
           <% if record.medical_images.present? %>
             <li>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between align-items-center espaciado">
               <h2>Imagenes <%= record.medical_images.count.positive? ? record.medical_images.count : 0 %></h2>
                 <% if record.medical_images.count.positive? %>
                   <div>
-                    <%= link_to "detalles", record_path(id: record.id, item: "medical-image"), class: "btn btn-primary" %>
+                    <%= link_to "Ver Detalles", record_path(id: record.id, item: "medical-image"), class: "btn btn-light" %>
                     <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
                 <% else %>
@@ -47,11 +54,11 @@
           <% end %>
           <% if record.medical_results.present? %>
             <li>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between align-items-center espaciado">
               <h2>Resultados <%= record.medical_results.count.positive? ? record.medical_results.count : 0 %></h2>
                 <% if record.medical_results.count.positive? %>
                   <div>
-                    <%= link_to "detalles", record_path(id: record.id, item: "medical-result"), class: "btn btn-primary" %>
+                    <%= link_to "Ver Detalles", record_path(id: record.id, item: "medical-result"), class: "btn btn-light" %>
                     <button type="button" class="btn btn-primary">Descargar</button>
                   </div>
                 <% else %>
@@ -64,11 +71,11 @@
           <% end %>
           <% if record.prescriptions.present? %>
             <li>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between align-items-center espaciado">
                 <h2>Recetas <%= record.prescriptions.count.positive? ? record.prescriptions.count : 0 %></h2>
                   <% if record.prescriptions.count.positive? %>
                     <div>
-                      <%= link_to "detalles", record_path(id: record.id, item: "prescription"), class: "btn btn-primary" %>
+                      <%= link_to "Ver Detalles", record_path(id: record.id, item: "prescription"), class: "btn btn-light" %>
                       <button type="button" class="btn btn-primary">Descargar</button>
                   <% else %>
                     <div>
