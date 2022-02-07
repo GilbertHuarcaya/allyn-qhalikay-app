@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :records do
     collection do
       get :medical_histories
+      get :patients_records
     end
     resources :medical_images, only: [:new, :create]
     resources :medical_results, only: [:new, :create]
