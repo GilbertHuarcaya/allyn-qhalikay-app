@@ -39,7 +39,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     authorize @record
     if @record.save
-      redirect_to record_path(@record)
+      redirect_to records_path
     else
       render :new
     end
