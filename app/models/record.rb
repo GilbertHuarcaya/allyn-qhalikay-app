@@ -12,4 +12,11 @@ class Record < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }, # <-- now `superman batm` will return something!
                   }
+  pg_search_scope :dni_search,
+                  associated_against: {
+                    user: [:dni],
+                  },
+                  using: {
+                    tsearch: { prefix: true },
+                  }
 end

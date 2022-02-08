@@ -7,7 +7,7 @@
 <div class = "container">
 <% if user_signed_in? %>
   <div class=" card user-info ">
-  
+
     <div class="user-home ">
 
       <% if current_user.photo.key === nil %>
@@ -26,7 +26,7 @@
   </div>
 <% else %>
     <div class="card-main">
-      <img  src="https://qhalikay.qolkex.org/img/logo.png" alt="qhalikay">
+      <%= image_tag "logo.png", class: "w-50", style: "border-radius: 20px;" %>
         <h4><strong>"TU SALUD Y BIENESTAR SIEMPRE ONLINE"</strong></h4>
         <%= link_to "Empezar", new_user_session_path, class: "nav-link", class: "btn btn-primary mr-3" %>
     </div>
