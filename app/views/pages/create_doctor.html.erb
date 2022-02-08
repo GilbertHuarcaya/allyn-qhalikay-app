@@ -1,0 +1,27 @@
+<div
+  class="view flex-grow-1"
+  style="background-image: url('https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80'); background-repeat: no-repeat; background-size: cover; background-position:center;"
+>
+  <div class="view flex-grow-1">
+    <div class="container bg-image">
+      <div class="col-12 col-md-6 offset-lg-3 ">
+
+        <div class="bg-white  p-3 shadow form1">
+          <div
+            class="card-category  form d-flex align-items-end "
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513224502586-d1e602410265?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80); background-size: cover; height: 150px; background-position: center;"
+          ></div>
+          <br>
+          <h2 class="text-black text-center">Hola Admin, busca un usuario y cambiale el rol a médico</h2>
+          <br />
+            <%= form_tag update_doctor_path, method: :patch do %>
+              <%= select_tag "user", options_from_collection_for_select(@users, "id", "dni"), class: "select2 w-100", prompt: "Selecciona el dni del médico" %>
+              <br>
+              <br>
+              <%= submit_tag "Cambiar rol a médico", class: "btn btn-flat my-3 text-center" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

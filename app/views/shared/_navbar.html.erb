@@ -16,12 +16,23 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-expanded="false">Servicios</a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">
-              <%= link_to "Historial medico", medical_histories_records_path, class: "nav-link" %>
-              <%= link_to "Resultados medicos", records_path, class: "nav-link" %>
-              <%= link_to "Centros medicos", clinics_path, class: "nav-link" %>
+              <%= link_to "Chequeo médico general", medical_histories_records_path, class: "nav-link" %>
+              <%= link_to "Resultados médicos", records_path, class: "nav-link" %>
+              <%= link_to "Centros médicos", clinics_path, class: "nav-link" %>
             </div>
         </li>
-        <% if current_user.admin || current_user.doctor %>
+        <% if current_user.doctor %>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown2" data-toggle="dropdown" aria-expanded="false">Médico</a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+              <%= link_to "Crear clinica", new_clinic_path, class: "nav-link" %>
+              <%= link_to "Crear registro", new_record_path, class: "nav-link" %>
+              <%= link_to "Buscar registro",patients_records_records_path, class: "nav-link" %>
+            </div>
+        </li>
+        <% end %>
+        <% if current_user.admin %>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown2" data-toggle="dropdown" aria-expanded="false">Administrador</a>
 
@@ -29,6 +40,7 @@
               <%= link_to "Crear clinica", new_clinic_path, class: "nav-link" %>
               <%= link_to "Crear registro", new_record_path, class: "nav-link" %>
               <%= link_to "Buscar registro",patients_records_records_path, class: "nav-link" %>
+              <%= link_to "Cambiar rol médico", create_doctor_path, class: "nav-link" %>
             </div>
         </li>
         <% end %>
