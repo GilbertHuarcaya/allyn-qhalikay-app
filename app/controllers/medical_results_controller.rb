@@ -19,7 +19,7 @@ class MedicalResultsController < ApplicationController
   def destroy
     authorize @medical_result
     @medical_result.destroy
-    redirect_to medical_results_path
+    redirect_to record_path(@medical_result.record)
   end
 
   def edit

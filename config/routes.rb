@@ -16,4 +16,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :prescriptions, only: [:edit, :destroy]
+  resources :medical_images, only: [:edit, :destroy]
+  resources :medical_results, only: [:edit, :destroy]
 end
