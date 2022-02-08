@@ -18,7 +18,7 @@ class MedicalImagesController < ApplicationController
   def destroy
     authorize @medical_image
     @medical_image.destroy
-    redirect_to medical_images_path
+    redirect_to record_path(@medical_image.record)
   end
 
   def edit

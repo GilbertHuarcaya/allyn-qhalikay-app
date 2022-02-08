@@ -2,9 +2,13 @@
 <%= render @partial %>
 <% else %>
 <div class="container">
-<h2>Registro del usuario:</h2>
-<h3><%= @record.user.user_name %> - <%= @record.user.dni %> - <%= @record.appointment %></h3>
-<br>
+  <div class="d-flex space-between edit-register">
+    <h2>Registro del usuario:</h2>
+    <h3><%= @record.user.user_name %> - <%= @record.user.dni %> - <%= @record.appointment %></h3>
+    <%= link_to "Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borarr el registro?"}, class: "btn btn-danger"%>
+    <%= link_to "Editar registro", edit_record_path(@record), class: "btn btn-success" %>
+  </div>
+    <br>
   <div class="row">
     <div class="col-12 col-sm-6">
       <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-primary" %></div>
@@ -15,6 +19,7 @@
         <div>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_result.created_at) %> ago</em></small>
           <p class="mb-0"><%= medical_result.title %></p>
+          <%= link_to "Eliminar resultado médico", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borarr la imágen médica?"}, class: "btn btn-danger"%>
         </div>
       <% end %>
     </div>
@@ -37,6 +42,8 @@
         <div>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_image.created_at) %> ago</em></small>
           <p class="mb-0"><%= medical_image.title %></p>
+          <%= link_to "Eliminar imágen médica", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borarr la imágen médica?"}, class: "btn btn-danger"%>
+
         </div>
       <% end %>
     </div>
@@ -59,6 +66,7 @@
         <div>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(prescription.created_at) %> ago</em></small>
           <p class="mb-0"><%= prescription.title %></p>
+          <%= link_to "Eliminar receta", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borarr la receta?"}, class: "btn btn-danger"%>
         </div>
       <% end %>
     </div>
