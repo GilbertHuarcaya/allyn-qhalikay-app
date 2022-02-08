@@ -49,10 +49,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     authorize @record
     if @record.save
-      ActionCable.server.broadcast(
-        "record_channel",
-        { data: render_to_string(partial: "record", locals: { record: @record }), user: @record.user_id }
-      )
+      redirect_to record_path(@record)
     else
       render :new
     end
