@@ -13,10 +13,6 @@ class RecordPolicy < ApplicationPolicy
     return true
   end
 
-  def patients_records?
-    user.doctor
-  end
-
   def show?
     return true
   end
@@ -25,12 +21,16 @@ class RecordPolicy < ApplicationPolicy
     user.doctor
   end
 
-  def search?
-    return true
+  def patients_records?
+    user_is_both?
+  end
+
+  def edit?
+    user_is_both?
   end
 
   def update?
-    user.admin
+    user_is_both?
   end
 
   def destroy?
@@ -39,10 +39,7 @@ class RecordPolicy < ApplicationPolicy
 
   private
 
-  def user_is_owner_or_admin?
-    # El record sobre el cual autorice
-    # current_user => user
-    # @restaurant => record
-    user == record.user || user.admin
+  def user_is_both?
+    user.doctor || user.admin
   end
 end

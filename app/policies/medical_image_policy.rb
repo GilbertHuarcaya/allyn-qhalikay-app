@@ -9,32 +9,33 @@ class MedicalImagePolicy < ApplicationPolicy
     return true
   end
 
+  def new?
+    user_is_both?
+  end
+
+  def edit?
+    user_is_both?
+  end
+
   def show?
     return true
   end
 
   def create?
-    user.doctor
-  end
-
-  def search?
-    return true
+    user_is_both?
   end
 
   def update?
-    user.admin
+    user_is_both?
   end
 
   def destroy?
-    user.admin
+    user_is_both?
   end
 
   private
 
-  def user_is_owner_or_admin?
-    # El record sobre el cual autorice
-    # current_user => user
-    # @restaurant => record
-    user == record.user || user.admin
+  def user_is_both?
+    user.doctor || user.admin
   end
 end
