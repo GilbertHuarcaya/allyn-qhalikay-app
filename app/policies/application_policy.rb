@@ -12,6 +12,14 @@ class ApplicationPolicy
     false
   end
 
+  def create_doctor?
+    user.admin
+  end
+
+  def update_doctor?
+    user.admin
+  end
+
   def show?
     false
   end

@@ -1,5 +1,5 @@
-<div class="modal fade m-0 p-0" style="max-width: 50vw; height: 100vh" id="sidebar-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog m-0 p-0 h-100" role="document">
+<div class="modal fade m-0 p-0" style="height: 100vh" id="sidebar-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog m-0 p-0 h-100 w-50" role="document">
     <div class="modal-content h-100">
       <div class="py-3 px-1 bg-white m-0 p-0 h-100">
         <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -22,29 +22,31 @@
               </ul>
             </div>
           </li>
-          <% if current_user.admin %>
+          <% if current_user.doctor %>
           <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-              Historial
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+              Médico
             </button>
-            <div class="collapse" id="dashboard-collapse">
+            <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">Completo</a></li>
-                <li><a href="#" class="link-dark rounded">Semanal</a></li>
-                <li><a href="#" class="link-dark rounded">Mensual</a></li>
-                <li><a href="#" class="link-dark rounded">Anual</a></li>
+                <li><%= link_to "Buscar registro", patients_records_records_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Crear clinica", new_clinic_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Crear registro", new_record_path, class: "link-dark rounded" %></li>
               </ul>
             </div>
           </li>
+          <% end %>
+          <% if current_user.admin %>
           <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
               Administrador
             </button>
             <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><%= link_to "Clinicas", clinics_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Buscar registro", patients_records_records_path, class: "link-dark rounded" %></li>
                 <li><%= link_to "Crear clinica", new_clinic_path, class: "link-dark rounded" %></li>
                 <li><%= link_to "Crear registro", new_record_path, class: "link-dark rounded" %></li>
+                <li><%= link_to "Cambiar rol médico", create_doctor_path, class: "link-dark rounded" %></li>
               </ul>
             </div>
           </li>
