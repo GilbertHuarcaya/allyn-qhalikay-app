@@ -196,9 +196,15 @@ body {
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
+
     #avatar-home {
       padding: 0;
       margin: 0 0 2rem 0;
     }
   }
+}
+
+.word-typed {
+  font-weight: bold;
+  color: #203d7b;
 }
