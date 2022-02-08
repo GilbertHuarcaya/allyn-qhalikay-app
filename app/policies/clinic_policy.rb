@@ -14,11 +14,7 @@ class ClinicPolicy < ApplicationPolicy
   end
 
   def create?
-    user.doctor
-  end
-
-  def search?
-    return true
+    user.admin
   end
 
   def update?
@@ -31,10 +27,7 @@ class ClinicPolicy < ApplicationPolicy
 
   private
 
-  def user_is_owner_or_admin?
-    # El record sobre el cual autorice
-    # current_user => user
-    # @restaurant => record
-    user == record.user || user.admin
+  def user_is_both?
+    user.doctor || user.admin
   end
 end

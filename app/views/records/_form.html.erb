@@ -5,7 +5,11 @@
             style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513224502586-d1e602410265?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80); background-size: cover; height: 150px; background-position: center;"
           ></div>
           <br>
-          <h2 class="text-black text-center">Crea el nuevo registro de Exámen Médico ambulatorio</h2>
+          <% if @record.id.present? %>
+            <h2 class="text-black text-center">Edita este registro de Exámen Médico ambulatorio</h2>
+          <% else %>
+            <h2 class="text-black text-center">Crea el nuevo registro de Exámen Médico ambulatorio</h2>
+          <% end %>
           <br />
           <%= simple_form_for @record, remote: true do |f| %>
             <%= f.error_notification %>
@@ -20,7 +24,11 @@
             </div>
 
             <div class="form-actions">
+            <% if @record.id.present? %>
+              <%= f.button :submit, value: "Actualizar", class: "btn btn-flat" %>
+            <% else %>
               <%= f.button :submit, value: "Crear registro", class: "btn btn-flat" %>
+            <% end %>
             </div>
           <% end %>
         </div>

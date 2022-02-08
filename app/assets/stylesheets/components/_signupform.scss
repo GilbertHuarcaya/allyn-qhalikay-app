@@ -1,17 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Questrial&display=swap');
-.sesion-form{
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Questrial&display=swap");
+.sesion-form {
   border-radius: 25px;
 }
-#user_photo{
+#user_photo {
   border-radius: 0px;
 }
 
-.h2-cuenta{
+#clinic_photo {
+  border-radius: 0px;
+}
+
+#clinic_photos {
+  border-radius: 0px;
+}
+
+#medical_result_photo {
+  border-radius: 0px;
+}
+
+#medical_image_photo {
+  border-radius: 0px;
+}
+
+#prescription_photo {
+  border-radius: 0px;
+}
+.h2-cuenta {
   text-align: center;
 }
 
-.signup-button{
+.signup-button {
   text-align: center;
   justify-content: center;
   margin-left: 200px;
- }
+}
