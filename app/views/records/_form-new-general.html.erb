@@ -7,9 +7,9 @@
           <br>
           <div class="d-flex align-items-center">
             <% if @record.id.present? %>
-            <h2 class="text-black text-center">Edita este registro de Chequeo Médico general</h2>
+            <h2 class="text-black text-center">Edita este registro de Chequeo médico</h2>
             <% else %>
-            <h2 class="text-black text-center">Crea el nuevo registro de Chequeo Médico general</h2>
+            <h2 class="text-black text-center">Crea el nuevo registro de Chequeo médico</h2>
             <% end %>
             <i id= "icon" class="fas fa-stethoscope m-0 p-0"></i>
           </div>
@@ -22,9 +22,9 @@
 
             <div class="form-inputs form1">
               <%= f.input :appointment, label: "Fecha de exámen medico", placeholder: "1/08/2021" %>
-              <%= f.association :user, label: "Dni del paciente", collection: User.all.where.not(admin: true).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
+              <%= f.association :user, label: "Dni del paciente", collection: User.all.where.not(admin: true).where.not(id: current_user.id).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
               <%= f.association :clinic, label: "Nombre del Centro de Salud", collection: Clinic.all.order(:name), prompt: "Buscar por Nombre", input_html: { class: "select2" } %>
-              <%= f.input :history, label: "Este es un chequeo médico general", :input_html => { :checked => true, :hidden => true } %>
+              <%= f.input :history, label: "Este es un Chequeo médico", :input_html => { :checked => true, :hidden => true } %>
             </div>
 
             <div class="form-actions">

@@ -3,8 +3,8 @@
   <head>
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
-    <%= favicon_link_tag "http://res.cloudinary.com/kenneth-cloudinary/image/upload/v1/development/vih4o3xb2gd5y06u1v832qs75hba.png", rel: "apple-touch-icon", type: "image/png" %>
-    <%= favicon_link_tag "http://res.cloudinary.com/kenneth-cloudinary/image/upload/v1/development/vih4o3xb2gd5y06u1v832qs75hba.png" %>
+    <%= favicon_link_tag "mini_logo.png", rel: "apple-touch-icon", type: "image/png" %>
+    <%= favicon_link_tag "favicon.ico" %>
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -23,6 +23,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag %>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

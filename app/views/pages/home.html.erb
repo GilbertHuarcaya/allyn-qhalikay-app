@@ -27,8 +27,11 @@
 <% else %>
     <div class="card-main">
       <%= image_tag "logo.png", class: "w-50", style: "border-radius: 20px;" %>
-        <h4><strong>"TU SALUD Y BIENESTAR SIEMPRE ONLINE"</strong></h4>
+        <h4><strong><span id="banner-typed-text"></span></strong></h4>
+
         <%= link_to "Empezar", new_user_session_path, class: "nav-link", class: "btn btn-primary mr-3" %>
+
+
     </div>
 <% end %>
 

@@ -1,0 +1,67 @@
+.card-top {
+  gap: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.title-top {
+  text-align: center;
+  flex-direction: column;
+}
+
+.title-top h1 {
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+
+#heart-line {
+  width: 800px;
+  height: 150px;
+  margin-top: 100px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#freepik_stories-doctors {
+  padding-right: 100px;
+  position: relative;
+}
+
+.cards-deck .card-box {
+  border: 1px solid black;
+  border-radius: 30px;
+  flex-direction: row;
+  width: 650px;
+  padding-right: 0px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-infodesc {
+  flex-direction: column;
+  padding: 20px;
+  margin: 20px;
+  text-align: justify;
+}
+
+.card-infodesc h3 {
+  text-align: center;
+  color: rgb(42, 50, 95);
+  font-weight: bolder;
+}
+
+.card-box img {
+  width: 200px;
+  margin-right: 0px;
+  object-fit: cover;
+  border-radius: 0px 30px 30px 0px;
+}
+
+.cards-deck {
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 40px;
+}

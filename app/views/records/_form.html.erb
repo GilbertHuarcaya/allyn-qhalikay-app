@@ -19,7 +19,7 @@
 
             <div class="form-inputs form1">
               <%= f.input :appointment, label: "Fecha de exámen medico", placeholder: "1/08/2021" %>
-              <%= f.association :user, label: "Dni del paciente", collection: User.all.where.not(admin: true).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
+              <%= f.association :user, label: "Dni del paciente", collection: User.all.where.not(admin: true).where.not(id: current_user.id).order(:dni), prompt: "Buscar por Dni", input_html: { class: "select2" } %>
               <%= f.association :clinic, label: "Nombre del Centro de Salud", collection: Clinic.all.order(:name), prompt: "Buscar por Nombre", input_html: { class: "select2" } %>
             </div>
 
