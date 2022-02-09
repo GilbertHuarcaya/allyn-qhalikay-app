@@ -30,12 +30,19 @@ class PrescriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @prescription = Prescription.find(params[:id])
+    authorize @prescription
+    @prescription.destroy
+    redirect_to record_path(@prescription.record)
+  end
+
   def show
   end
 
   private
 
   def prescription_params
-    params.require(:prescription).permit(:title, :photo)
+    params.require(:prescription).permit(:title, :photo, :record_id)
   end
 end

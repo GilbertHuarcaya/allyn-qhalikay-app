@@ -20,9 +20,14 @@
   height: 150px;
   background-size: cover;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .container{
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.big-div{
+  border-radius: 25px;
 }

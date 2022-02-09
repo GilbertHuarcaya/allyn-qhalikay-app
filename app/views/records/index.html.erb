@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="container">
-<div class="accordion" id="accordionExample">
+<div class="accordion" id=<%="records-user-#{current_user.id}"%>>
 <% @records.each do |record| %>
 
     <div class="accordion-item d-flex flex-column">
@@ -74,6 +74,7 @@
                     <div>
                       <%= link_to "Ver Detalles", record_path(id: record.id, item: "prescription"), class: "btn btn-light" %>
                       <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
                   <% else %>
                     <div>
                       <p> No hay archivos por mostrar </p>

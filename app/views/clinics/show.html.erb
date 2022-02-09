@@ -8,13 +8,13 @@
     <h1><%= @clinic.name %></h1>
     <div>
       <% if policy(@clinic).update? %>
-        <%= link_to "Edit", edit_clinic_path(@clinic), class: "btn btn-flat" %>
+        <%= link_to "Editar", edit_clinic_path(@clinic), class: "btn btn-success" %>
       <% end %>
       <% if policy(@clinic).destroy? %>
-        <%= link_to "Delete",
+        <%= link_to "Eliminar",
                     clinic_path(@clinic),
                     method: :delete,
-                    class: "btn btn-flat",
+                    class: "btn btn-danger",
                     data: {
                       confirm: "Are you sure you want to delete this list?",
                     } %>
@@ -69,16 +69,18 @@
       </div>
     </div>
     <div class="col-md-4 clinic-book">
-      <div class="book-card">
-        <h3>Telefono</h3>
-        <p><%= @clinic.phone %></p>
+      <div class="book-card-m0 text-center">
+        <h3>Teléfono</h3>
+        <p><i class="fas fa-phone"></i> <%= @clinic.phone %></p>
       </div>
       <div class="book-card-m0 text-center">
-        <h5><i class="far fa-user"></i> Llamar antes de las 6:00 p.m.</h5>
+        <h5><i class="fas fa-headset"></i> Llamar antes de las 6:00 p.m.</h5>
       </div>
     </div>
   </div>
-
+  <div class="d-flex align-items-center">
+  <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><h3 class="mb-0"> Puedes ver la ubicación del Centro Médico</h3>
+  </div>
   <div id="map"
     style="width: 100%; height: 300px;"
     data-markers="<%= @marker.to_json %>"

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "/create_doctor", to: "pages#create_doctor"
+  patch "/update_doctor", to: "pages#update_doctor"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :records do
     collection do
@@ -16,4 +18,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :prescriptions, only: [:edit, :destroy]
+  resources :medical_images, only: [:edit, :destroy]
+  resources :medical_results, only: [:edit, :destroy]
 end

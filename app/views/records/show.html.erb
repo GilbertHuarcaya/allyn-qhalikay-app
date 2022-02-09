@@ -2,19 +2,32 @@
 <%= render @partial %>
 <% else %>
 <div class="container">
-<h2>Registro del usuario:</h2>
-<h3><%= @record.user.user_name %> - <%= @record.user.dni %> - <%= @record.appointment %></h3>
-<br>
+  <div class="d-flex justify-content-between">
+  <div class="d-flex flex-column">
+    <h2>Registro del usuario:</h2>
+    <h4><%= @record.user.user_name %> - <%= @record.user.dni %> - <%= @record.appointment %></h4>
+  </div>
+  <div class="d-flex">
+  <% if current_user.admin %>
+    <%= link_to "Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borarr el registro?" }, class: "btn btn-danger h-50" %>
+  <% end %>
+    <%= link_to "Editar registro", edit_record_path(@record), class: "btn btn-success h-50" %>
+  </div>
+  </div>
+    <br>
   <div class="row">
     <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-primary" %></div>
+      <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-primary" %></div>
       <% if @record.medical_results.empty? %>
         <small><em class="text-muted">Ningun archivo</em></small>
       <% end %>
       <% @record.medical_results.each do |medical_result| %>
         <div>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_result.created_at) %> ago</em></small>
+          <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
+          <div class="d-flex gap-2 align-items-center">
           <p class="mb-0"><%= medical_result.title %></p>
+          <%= link_to "Eliminar resultado médico", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borarr la imágen médica?" }, class: "btn btn-danger" %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -29,14 +42,17 @@
   <hr class="my-5">
   <div class="row">
     <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Imágenes Medicas</h3>  <%= link_to "detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-primary" %></div>
+      <div class="d-flex gap-3">  <h3>Imágenes Medicas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-primary" %></div>
       <% if @record.medical_images.empty? %>
         <small><em class="text-muted">Ningun archivo</em></small>
       <% end %>
       <% @record.medical_images.each do |medical_image| %>
         <div>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(medical_image.created_at) %> ago</em></small>
+          <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
+          <div class="d-flex gap-2 align-items-center">
           <p class="mb-0"><%= medical_image.title %></p>
+          <%= link_to "Eliminar imágen médica", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borarr la imágen médica?" }, class: "btn btn-danger" %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -51,14 +67,17 @@
   <hr class="my-5">
   <div class="row">
     <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Recetas</h3>  <%= link_to "detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-primary" %></div>
+      <div class="d-flex gap-3">  <h3>Recetas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-primary" %></div>
       <% if @record.prescriptions.empty? %>
         <small><em class="text-muted">Ningun archivo</em></small>
       <% end %>
       <% @record.prescriptions.each do |prescription| %>
         <div>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(prescription.created_at) %> ago</em></small>
+          <small><em class="text-muted"><%= prescription.created_at %> </em></small>
+          <div class="d-flex gap-2 align-items-center">
           <p class="mb-0"><%= prescription.title %></p>
+          <%= link_to "Eliminar receta", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borarr la receta?" }, class: "btn btn-danger" %>
+        </div>
         </div>
       <% end %>
     </div>

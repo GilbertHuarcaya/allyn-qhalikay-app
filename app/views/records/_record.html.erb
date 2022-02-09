@@ -1,36 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80);">
-  <div class="container">
-    <h1>¡Busca los registros médicos de los pacientes!</h1>
-    <p>Encuentralos solo con el DNI</p>
-    <%= form_tag patients_records_records_path, method: :get do %>
-      <%= number_field_tag :query, params[:query], class: "form-control", placeholder: "Ingrese el DNI" %>
-      <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
-    <% end %>
-  </div>
-</div>
-<div class="container">
-<div class="accordion" id="accordionExample">
-<% @records.each do |record| %>
 
-    <div class="accordion-item d-flex flex-column">
+    <div class="accordion-item d-flex flex-column" id="record-<%= record.id %>">
     <div class="d-flex">
       <h2 class="accordion-header flex-grow-1" id=<%= "record-heading#{record.id}" %>>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#record-collapse#{record.id}" %> aria-expanded="false" aria-controls=<%= "record-collapse#{record.id}" %>>
           <div class="d-flex font-accordion">
             <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital">
-            <%= record.clinic.name.titleize %>
-            <span class="fecha">Fecha de Atención: <%= record.appointment %></span>
-            <span class="fecha">Dni: <%= record.user.dni %></span>
-            <br>
+              <span><%= record.clinic.name.titleize %></span><span class="fecha">Fecha de Atención: <%= record.appointment %></span>
 
           </div>
         </button>
       </h2>
-      <% if current_user.doctor %>
-      <div class="d-flex align-items-center btn-back-color">
-      <%= link_to "Editar", record_path(record), class: "btn btn-primary" %>
-      </div>
-      <% end %>
     </div>
       <div id=<%= "record-collapse#{record.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{record.id}" %> >
         <div class="accordion-body">
@@ -77,6 +56,7 @@
                     <div>
                       <%= link_to "Ver Detalles", record_path(id: record.id, item: "prescription"), class: "btn btn-light" %>
                       <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
                   <% else %>
                     <div>
                       <p> No hay archivos por mostrar </p>
@@ -89,7 +69,3 @@
         </div>
       </div>
     </div>
-
-<% end %>
-</div>
-</div>
