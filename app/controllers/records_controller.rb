@@ -20,9 +20,9 @@ class RecordsController < ApplicationController
 
   def patients_records
     if params[:query].present?
-      @records = policy_scope(Record).dni_search(params[:query])
+      @records = policy_scope(Record).where.not(user: current_user).dni_search(params[:query])
     else
-      @records = policy_scope(Record).order(created_at: :desc)
+      @records = policy_scope(Record).where.not(user: current_user).order(created_at: :desc)
     end
     authorize @records
   end

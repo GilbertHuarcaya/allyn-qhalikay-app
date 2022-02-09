@@ -3,7 +3,7 @@
     <div class="title-top d-flex">
             <img id="heart-line" src="https://static.vecteezy.com/system/resources/previews/001/188/035/non_2x/heartbeat-long-line-png.png" alt="heartbeat">
             <h1>Evaluaciones Médicas (Chequeo)</h1>
-            <h2>¡ Hola <strong><%= current_user.user_name.titleize%></strong> !</h2>
+            <h2>¡ Hola <strong><%= current_user.user_name.titleize %></strong> !</h2>
     </div>
 
     <div>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class=" cards-deck d-flex row  ">
+<div class=" cards-deck d-flex row ">
     <div class="card-box  d-flex">
         <div class="card-infodesc d-flex  ">
             <h3><strong>¿Qué es?</strong></h3>
@@ -37,7 +37,7 @@
  </div>
 
  <div class="container">
-    <h1>Aqui estan tus exámenes generales e historial médico!</h1>
+    <h1>Aqui estan tus chequeos médicos!</h1>
     <p>Encuentralos por fecha</p>
     <%= form_tag records_path, method: :get do %>
       <%= date_field_tag :query, params[:query], class: "form-control", placeholder: "por fecha" %>
@@ -62,7 +62,7 @@
           </div>
         </button>
       </h2>
-      <% if current_user.doctor %>
+      <% if current_user.admin %>
       <div class="d-flex align-items-center btn-back-color">
       <%= link_to "Editar", record_path(record), class: "btn btn-primary" %>
       </div>
