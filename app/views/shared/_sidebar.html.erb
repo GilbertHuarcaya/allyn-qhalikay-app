@@ -24,10 +24,10 @@
           </li>
           <% if current_user.doctor %>
           <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#medico-collapse" aria-expanded="false">
               Médico
             </button>
-            <div class="collapse" id="orders-collapse">
+            <div class="collapse" id="medico-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><%= link_to "Buscar registro", patients_records_records_path, class: "link-dark rounded" %></li>
                 <li><%= link_to "Crear registro", new_record_path, class: "link-dark rounded" %></li>
@@ -37,10 +37,10 @@
           <% end %>
           <% if current_user.admin %>
           <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
               Administrador
             </button>
-            <div class="collapse" id="orders-collapse">
+            <div class="collapse" id="admin-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><%= link_to "Buscar registro", patients_records_records_path, class: "link-dark rounded" %></li>
                 <li><%= link_to "Crear clinica", new_clinic_path, class: "link-dark rounded" %></li>
