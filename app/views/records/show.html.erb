@@ -1,98 +1,133 @@
 <% if @partial.present? %>
 <%= render @partial %>
 <% else %>
-<div class="container">
-  <div class="d-flex justify-content-between">
-  <div class="d-flex flex-column">
-    <h2>Registro del usuario:</h2>
-    <h4><%= @record.user.user_name %> - <%= @record.user.dni %> - <%= @record.appointment %></h4>
-  </div>
-  <div class="d-flex btn-delete-edit">
-  <% if current_user.admin %>
-    <%= link_to "Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borrar el registro?" }, class: "btn btn-danger h-50" %>
-  <% end %>
-    <%= link_to "Editar registro", edit_record_path(@record), class: "btn btn-success h-50" %>
-  </div>
-  </div>
-    <br>
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-details" %></div>
-      <% if @record.medical_results.empty? %>
-        <small><em class="text-muted">Ningun archivo</em></small>
-      <% end %>
-      <% @record.medical_results.each do |medical_result| %>
-        <div>
-          <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
-          <div class="d-flex gap-2 align-items-center">
-          <p class="mb-0"><%= medical_result.title %></p>
-          <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+  <div class="container">
+    <div class="d-flex justify-content-between flex-wrap">
+
+
+        <div class="user-container d-flex info-user">
+          <div class="box-padding">
+
+            <% if @record.user.photo.key === nil %>
+             <%= image_tag "avatar-profile", class: "img-user" %>
+            <% else %>
+              <%= cl_image_tag @record.user.photo.key, class: "img-user" %>
+            <% end %>
+
+          </div>
+          <div class="info-user-details">
+
+            <%# <h4>Registro del usuario:</h4> %>
+            <ul class="ul-info">
+              <li>
+                <h4><strong>Registro del paciente</strong></h4>
+              </li>
+              <li>
+                <h4><strong>Nombre:</strong> <%= @record.user.user_name %></h4>
+              </li>
+              <li>
+                <h4><strong>Dni:</strong> <%= @record.user.dni %></h4>
+              </li>
+              <li>
+                <h4><strong>Fecha:</strong> <%= @record.appointment %></h4>
+              </li>
+            </ul>
+
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="col-12 col-sm-6">
-      <div class="rounded p-3 d-flex justify-content-md-end justify-content-center ">
-      <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_result_modal">
-        Agregar resultado médico
-      </button>
+
+
+      <%# <div class="d-flex flex-column">
+        <h2>Registro del usuario:</h2>
+        <h4><%= @record.user.user_name %>  <%#= @record.user.dni - <%= @record.appointment</h4> %>
+      <%# </div> %>
+      <div class="d-flex  align-items-center btn-delete-edit">
+        <% if current_user.admin %>
+          <%= link_to "Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borrar el registro?" }, class: "btn btn-outline-danger" %>
+        <% end %>
+        <%= link_to "Editar registro", edit_record_path(@record), class: "btn btn-outline-success" %>
       </div>
     </div>
-  </div>
-  <hr class="my-5">
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Imágenes Medicas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-details" %></div>
-      <% if @record.medical_images.empty? %>
-        <small><em class="text-muted">Ningun archivo</em></small>
-      <% end %>
-      <% @record.medical_images.each do |medical_image| %>
-        <div>
-          <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
-          <div class="d-flex gap-2 align-items-center">
-          <p class="mb-0"><%= medical_image.title %></p>
-          <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+      <br>
+    <hr class="mb-5 mt-3">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-details" %></div>
+        <% if @record.medical_results.empty? %>
+          <small><em class="text-muted">Ningun archivo</em></small>
+        <% end %>
+        <% @record.medical_results.each do |medical_result| %>
+          <div>
+            <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
+            <div class="d-flex gap-2 align-items-center my-1">
+            <p class="mb-0"><%= medical_result.title %></p>
+            <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+            </div>
           </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="rounded p-3 d-flex justify-content-md-end justify-content-center ">
+        <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_result_modal">
+          Agregar resultado médico
+        </button>
         </div>
-      <% end %>
-    </div>
-    <div class="col-12 col-sm-6">
-      <div class="d-flex justify-content-md-end justify-content-center rounded p-3">
-      <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_image_modal">
-        Agregar imagen médica
-      </button>
       </div>
     </div>
-  </div>
-  <hr class="my-5">
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <div class="d-flex gap-3">  <h3>Recetas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-details" %></div>
-      <% if @record.prescriptions.empty? %>
-        <small><em class="text-muted">Ningun archivo</em></small>
-      <% end %>
-      <% @record.prescriptions.each do |prescription| %>
-        <div>
-          <small><em class="text-muted"><%= prescription.created_at %> </em></small>
-          <div class="d-flex gap-2 align-items-center">
-          <p class="mb-0"><%= prescription.title %></p>
-          <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="d-flex gap-3">  <h3>Imágenes Medicas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-details" %></div>
+        <% if @record.medical_images.empty? %>
+          <small><em class="text-muted">Ningun archivo</em></small>
+        <% end %>
+        <% @record.medical_images.each do |medical_image| %>
+          <div>
+            <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
+            <div class="d-flex gap-2 align-items-center my-1">
+            <p class="mb-0"><%= medical_image.title %></p>
+            <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="d-flex justify-content-md-end justify-content-center rounded p-3">
+        <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_medical_image_modal">
+          Agregar imagen médica
+        </button>
         </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-12 col-sm-6">
-      <div class="d-flex justify-content-md-end justify-content-center rounded p-3">
-        <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_prescription_modal">
-        Agregar receta
-      </button>
       </div>
     </div>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="d-flex gap-3">  <h3>Recetas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-details" %></div>
+        <% if @record.prescriptions.empty? %>
+          <small><em class="text-muted">Ningun archivo</em></small>
+        <% end %>
+        <% @record.prescriptions.each do |prescription| %>
+          <div>
+            <small><em class="text-muted"><%= prescription.created_at %> </em></small>
+            <div class="d-flex gap-2 align-items-center my-1">
+            <p class="mb-0"><%= prescription.title %></p>
+            <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+          </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="d-flex justify-content-md-end justify-content-center rounded p-3">
+          <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#new_prescription_modal">
+          Agregar receta
+        </button>
+        </div>
+      </div>
+    </div>
+  <%= render "medical_results/new", record: @record %>
+  <%= render "medical_images/new", record: @record %>
+  <%= render "prescriptions/new", record: @record %>
   </div>
-<%= render "medical_results/new", record: @record %>
-<%= render "medical_images/new", record: @record %>
-<%= render "prescriptions/new", record: @record %>
-</div>
 <% #link_to "Editar receta", edit_record_prescription_path(@record), class: "btn btn-flat" %>
 
 
