@@ -19,10 +19,8 @@
 
 .navbar-logo {
   margin: auto;
-  font-size: 28px;
-  font-weight: bolder;
-  font-family: "Caveat", cursive;
 }
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -71,6 +69,7 @@
   background-color: transparent;
   border: 0;
 }
+
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(0, 0, 0, 0.85);
@@ -88,6 +87,7 @@
 .btn-toggle[aria-expanded="true"] {
   color: rgba(0, 0, 0, 0.85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -99,6 +99,7 @@
   margin-left: 1.25rem;
   text-decoration: none;
 }
+
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
@@ -111,6 +112,7 @@
 .fw-semibold {
   font-weight: 600;
 }
+
 .lh-tight {
   line-height: 1.25;
 }
