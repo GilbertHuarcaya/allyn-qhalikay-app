@@ -20,6 +20,7 @@
   border-color: #18a0fb;
   border-radius: 4px;
   background-color: #f8f9fa;
+  height: 39px;
   transition: background 0.3s ease;
   &:hover {
     background: #e2e6ea;
@@ -31,4 +32,13 @@
   margin-right: 16px;
   border-radius: 4px;
   height: 45px;
+}
+
+.btn-delete-edit .btn-outline-success:hover {
+    color: white;
+  }
+
+.btn-delete-edit .btn-outline-danger:hover {
+  background-color: #FC4F4F;
+  border-color: #FC4F4F;
 }
