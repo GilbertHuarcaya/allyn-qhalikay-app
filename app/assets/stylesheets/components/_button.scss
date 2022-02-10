@@ -14,3 +14,20 @@
 .btn-block{
   width: 100%;
 }
+
+.btn-details {
+  color: #18a0fb;
+  border-color: #18a0fb;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  transition: background 0.3s ease;
+  &:hover {
+    background: #e2e6ea;
+    color: #18a0fb;
+  }
+}
+
+.btn-delete-edit .btn {
+  margin-right: 16px;
+  border-radius: 4px;
+}

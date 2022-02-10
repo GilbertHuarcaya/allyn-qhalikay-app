@@ -81,8 +81,9 @@
   <div class="d-flex align-items-center">
   <img src="https://www.svgrepo.com/show/76803/hospital.svg" width="30px" class="mr-3" alt="Logo-hospital"><h3 class="mb-0"> Puedes ver la ubicación del Centro Médico</h3>
   </div>
+  <br>
   <div id="map"
-    style="width: 100%; height: 300px;"
+    style="width: 100%; height: 300px; box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);"
     data-markers="<%= @marker.to_json %>"
     data-mapbox-api-key="pk.eyJ1IjoiZWxlY3RyaWNoaW1wIiwiYSI6ImNreXg5NDcxdTAwNGsybm53ZjV3NGxobHQifQ.C9kz89noTKxkUscwAIE8Dg">
   </div>
