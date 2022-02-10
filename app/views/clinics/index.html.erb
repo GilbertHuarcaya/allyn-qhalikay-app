@@ -1,4 +1,9 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3072&q=80);">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+</head>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://im5.ezgif.com/tmp/ezgif-5-88decad0d0.gif);">
   <div class="container">
     <h1>Reserva tu <strong>cita</strong>!</h1>
     <p>Encuentra el centro de salud mas cercano, a una llamada</p>
@@ -12,7 +17,7 @@
 <div class="cards-container">
 
   <div class="only-cards mt-3">
-    <h2 class="center">Centros de salud en el área</h2>
+    <h2 class="center " id="clinics-tittle">Centros de salud en el área</h2>
     <div class="cards">
       <% @clinics.each do |clinic| %>
         <div class="card-trip">

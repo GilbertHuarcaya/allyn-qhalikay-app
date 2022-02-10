@@ -9,13 +9,15 @@
   padding: 0 1rem;
 }
 
-.cards-container > div {
+.cards-container>div {
   flex-grow: 1;
   max-width: 1000px;
 }
+
 .only-cards {
   padding: 0 1rem 0 0;
 }
+
 .cards-container .cards {
   // flex-grow: 1;
 }
@@ -33,9 +35,10 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 
-.card-trip > img {
+.card-trip>img {
   height: 200px;
   width: 100%;
   object-fit: cover;
@@ -88,12 +91,14 @@
     .only-cards {
       padding: 0;
     }
+
     #map {
       width: 100%;
       max-width: 50rem;
       max-height: 50vh;
     }
   }
+
   .cards {
     grid-template-columns: 1fr;
     margin: 0;
