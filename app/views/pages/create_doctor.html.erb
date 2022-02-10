@@ -15,7 +15,7 @@
           <h2 class="text-black text-center">Hola Admin, busca un usuario y cambiale el rol a médico</h2>
           <br />
             <%= form_tag update_doctor_path, method: :patch do %>
-              <%= select_tag "user", options_from_collection_for_select(@users, "id", "to_label"), class: "select2 w-100", prompt: "Selecciona el dni del médico", style: "height: 30px" %>
+              <%= select_tag "user", options_from_collection_for_select(@users, "id", "to_label"), class: "select2 w-100", prompt: "Selecciona el dni del médico", style: "height: 30px", required: true %>
               <br>
               <br>
               <%= text_field_tag "role", nil, placeholder: "Asigna un rol si no es médico", class: "select2 w-100" %>
