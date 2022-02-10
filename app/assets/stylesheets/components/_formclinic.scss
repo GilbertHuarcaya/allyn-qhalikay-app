@@ -1,21 +1,20 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Questrial&display=swap');
 
-.bg-white{
+.bg-white {
   font-family: 'Questrial', sans-serif;
 }
 
-.h2{
-  text-align: center ;
+.h2 {
+  text-align: center;
   font-weight: bold;
   text-decoration: underline;
 }
 
-.form-actions{
+.form-actions {
   justify-content: center;
 }
 
-.card-category{
+.card-category {
   background-position: center;
   height: 150px;
   background-size: cover;
@@ -23,11 +22,32 @@
   border-radius: 10px;
 }
 
-.container{
+.container {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.big-div{
+.big-div {
   border-radius: 25px;
+}
+
+.book-card-m0 {
+  border-radius: 20px;
+}
+
+.book-card {
+  border-radius: 30px;
+}
+
+.carousel-item img {
+  border-radius: 30px;
+}
+
+#clinics-tittle {
+  font-family: "Kanit",
+    sans-serif;
+  font-weight: bold;
+  margin-top: 5px;
+
+
 }
