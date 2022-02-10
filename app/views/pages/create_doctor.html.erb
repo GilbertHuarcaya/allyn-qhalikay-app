@@ -15,10 +15,14 @@
           <h2 class="text-black text-center">Hola Admin, busca un usuario y cambiale el rol a médico</h2>
           <br />
             <%= form_tag update_doctor_path, method: :patch do %>
-              <%= select_tag "user", options_from_collection_for_select(@users, "id", "dni"), class: "select2 w-100", prompt: "Selecciona el dni del médico" %>
+              <%= select_tag "user", options_from_collection_for_select(@users, "id", "to_label"), class: "select2 w-100", prompt: "Selecciona el dni del médico", style: "height: 30px" %>
               <br>
               <br>
-              <%= submit_tag "Cambiar rol a médico", class: "btn btn-flat my-3 text-center" %>
+              <%= text_field_tag "role", nil, placeholder: "Asigna un rol si no es médico", class: "select2 w-100" %>
+              <br>
+              <br>
+              <p><small>Si selecciona a un usuario que ya tenga un rol, se eliminaran los permisos</small></p>
+              <%= submit_tag "Cambiar rol", class: "btn btn-flat my-3 text-center" %>
             <% end %>
         </div>
       </div>

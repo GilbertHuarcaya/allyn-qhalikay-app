@@ -5,20 +5,25 @@
 }
 
 .title-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   flex-direction: column;
+  position: relative;
 }
-
+.title-top img {
+  opacity: 0.1;
+  position: absolute;
+}
 .title-top h1 {
   margin-top: 50px;
   font-weight: bold;
 }
 
-
 #heart-line {
   width: 800px;
   height: 150px;
-  margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -33,6 +38,7 @@
   border-radius: 30px;
   flex-direction: row;
   width: 650px;
+  max-width: 90vw;
   padding-right: 0px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
@@ -64,4 +70,19 @@
   justify-content: space-between;
   gap: 28px;
   margin-bottom: 40px;
+}
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-deck .card-box {
+    border: 1px solid black;
+    border-radius: 30px;
+    flex-direction: column;
+    width: 650px;
+    max-width: 90vw;
+    padding: 0px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    img {
+      width: 100%;
+      border-radius: 0 0 30px 30px;
+    }
+  }
 }
