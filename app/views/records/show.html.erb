@@ -2,17 +2,26 @@
 <%= render @partial %>
 <% else %>
   <div class="container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between flex-wrap">
 
 
         <div class="user-container d-flex info-user">
           <div class="box-padding">
-            <%= cl_image_tag @record.user.photo.key, class: "img-user" %>
+
+            <% if @record.user.photo.key === nil %>
+             <%= image_tag "avatar-profile", class: "img-user" %>
+            <% else %>
+              <%= cl_image_tag @record.user.photo.key, class: "img-user" %>
+            <% end %>
+
           </div>
           <div class="info-user-details">
 
-            <h4>Registro del usuario:</h4>
+            <%# <h4>Registro del usuario:</h4> %>
             <ul class="ul-info">
+              <li>
+                <h4><strong>Registro del usuario</strong></h4>
+              </li>
               <li>
                 <h4><strong>Nombre:</strong> <%= @record.user.user_name %></h4>
               </li>

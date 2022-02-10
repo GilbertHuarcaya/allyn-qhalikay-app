@@ -43,14 +43,13 @@
 
 .user-container {
   overflow: hidden;
-  height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
   border-radius: 5px;
 
   .box-padding {
-    margin-left: 10px;
+    margin: 10px;
   }
   .img-user {
     height: 100%;
@@ -66,10 +65,17 @@
   .ul-info {
     list-style: none;
     margin-bottom: 0px;
+    padding-left: 0px;
     li h4 {
       font-size: 15px;
       margin-bottom: 0;
       margin: 4px 0px;
     }
+  }
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .user-container {
+    width: 100%;
   }
 }
