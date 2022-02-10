@@ -57,12 +57,23 @@
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
         <% @record.medical_results.each do |medical_result| %>
-          <div>
+          <div class="mb-4">
             <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
-            <div class="d-flex gap-2 align-items-center my-1">
-            <p class="mb-0"><%= medical_result.title %></p>
-            <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
-            </div>
+
+            <% if medical_result.photo.present? %>
+              <div class="d-flex gap-2 align-items-center my-1">
+                <p class="mb-0"><%= medical_result.title %></p>
+                <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+
+                <%= cl_image_tag medical_result.photo.key, height: "70" %>
+              </div>
+            <% else %>
+               <div class="d-flex gap-2 align-items-center my-1">
+                <h6><strong>Ningun archivo</strong></h6>
+                <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            <% end %>
+
           </div>
         <% end %>
       </div>
@@ -82,12 +93,22 @@
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
         <% @record.medical_images.each do |medical_image| %>
-          <div>
+          <div class="mb-4">
             <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
-            <div class="d-flex gap-2 align-items-center my-1">
-            <p class="mb-0"><%= medical_image.title %></p>
-            <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
-            </div>
+
+            <% if medical_image.photo.present? %>
+              <div class="d-flex gap-2 align-items-center my-1">
+                <p class="mb-0"><%= medical_image.title %></p>
+                <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= cl_image_tag medical_image.photo.key, height: "70" %>
+              </div>
+            <% else %>
+               <div class="d-flex gap-2 align-items-center my-1">
+                <h6><strong>Ningun archivo</strong></h6>
+                <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            <% end %>
+
           </div>
         <% end %>
       </div>
@@ -107,12 +128,22 @@
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
         <% @record.prescriptions.each do |prescription| %>
-          <div>
+          <div class="mb-4">
             <small><em class="text-muted"><%= prescription.created_at %> </em></small>
-            <div class="d-flex gap-2 align-items-center my-1">
-            <p class="mb-0"><%= prescription.title %></p>
-            <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
-          </div>
+
+            <% if prescription.photo.present? %>
+              <div class="d-flex gap-2 align-items-center my-1">
+                <p class="mb-0"><%= prescription.title %></p>
+                <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= cl_image_tag prescription.photo.key, height: "70" %>
+              </div>
+            <% else %>
+              <div class="d-flex gap-2 align-items-center my-1">
+                <h6><strong>Ningun archivo</strong></h6>
+                <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            <% end %>
+
           </div>
         <% end %>
       </div>
