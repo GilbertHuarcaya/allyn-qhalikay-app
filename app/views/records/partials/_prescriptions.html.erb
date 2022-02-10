@@ -24,14 +24,14 @@
         <div id=<%= "record-collapse#{prescription.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{prescription.id}" %> >
           <div class="accordion-body resultados-sin-vinetas">
 
-              <%# <% if prescription.photo.present? %>
+              <% if prescription.photo.present? %>
 
                   <div class="d-flex justify-content-between align-items-center espaciado">
                     <%= cl_image_tag prescription.photo.key, class: "width-images-results" %>
                   </div>
-
-              <%# <% end %>
-
+              <% else %>
+                <h4 class="font-accordion mb-0">Ningun archivo</h4>
+              <% end %>
           </div>
       </div>
   </div>

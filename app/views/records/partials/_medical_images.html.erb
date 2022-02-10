@@ -23,13 +23,14 @@
         <div id=<%= "record-collapse#{image.id}" %>  class="accordion-collapse collapse" aria-labelledby=<%= "record-heading#{image.id}" %> >
           <div class="accordion-body resultados-sin-vinetas">
 
-              <%# <% if image.photo.present? %>
+              <% if image.photo.present? %>
 
-                  <div class="d-flex justify-content-between align-items-center espaciado">
-                    <%= cl_image_tag image.photo.key, class: "width-images-results" %>
-                  </div>
-
-              <%# <% end %>
+                <div class="d-flex justify-content-between align-items-center espaciado">
+                  <%= cl_image_tag image.photo.key, class: "width-images-results" %>
+                </div>
+              <% else %>
+                <h4 class="font-accordion mb-0">Ningun archivo</h4>
+              <% end %>
 
           </div>
       </div>
