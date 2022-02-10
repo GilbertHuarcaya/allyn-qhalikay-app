@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Questrial&display=swap");
+
 .sesion-form {
   border-radius: 25px;
 }
+
 #user_photo {
   border-radius: 0px;
 }
@@ -25,6 +27,7 @@
 #prescription_photo {
   border-radius: 0px;
 }
+
 .h2-cuenta {
   text-align: center;
 }
@@ -33,4 +36,21 @@
   text-align: center;
   justify-content: center;
   margin-left: 200px;
+}
+
+.welcome-text p {
+  font-family: 'Poppins',
+    sans-serif;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(80, 80, 82, 0.748);
+}
+
+.welcome-text p strong {
+  font-family: 'Barlow',
+    sans-serif;
+  font-size: 23px;
+  color: rgb(19, 42, 90);
+
 }
