@@ -10,7 +10,7 @@ import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { loadDynamicBannerText } from '../components/banner';
-
+import {initUpdateNavbarOnScroll } from '../components/navbar'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -33,4 +33,5 @@ document.addEventListener('turbolinks:load', () => {
     initMapbox();
     initAutocomplete();
     loadDynamicBannerText();
+    initUpdateNavbarOnScroll();
 });

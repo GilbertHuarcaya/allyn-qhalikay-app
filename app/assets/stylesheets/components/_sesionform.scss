@@ -6,6 +6,16 @@
   border-radius: 10px;
   width: 90%;
   max-width: 40rem;
+  position: sticky;
+  top: 180px;
+}
+
+.sesion-form-reg {
+  border-radius: 10px;
+  width: 90%;
+  max-width: 35rem;
+  position: sticky;
+  top: 90px;
 }
 
 .headers-form {
@@ -73,6 +83,16 @@
   .welcome-text {
     margin: 2rem 0;
     z-index: 998;
+  }
+  .sesion-form-reg {
+    border-radius: 10px;
+    width: 100%;
+    position: sticky;
+    top: 90px;
+  }
+  .sesion-miniform {
+    padding: 0;
+    margin: 1rem;
   }
 }
 
