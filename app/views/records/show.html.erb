@@ -19,7 +19,7 @@
           </div>
           <div class="info-user-details">
 
-            <%# <h4>Registro del usuario:</h4> %>
+            <% # <h4>Registro del usuario:</h4> %>
             <ul class="ul-info">
               <li>
                 <h4><strong>Datos del paciente</strong></h4>
@@ -38,11 +38,6 @@
           </div>
         </div>
 
-
-      <%# <div class="d-flex flex-column">
-        <h2>Registro del usuario:</h2>
-        <h4><%= @record.user.user_name %>  <%#= @record.user.dni - <%= @record.appointment</h4> %>
-      <%# </div> %>
       <div class="d-flex  align-items-center btn-delete-edit">
         <% if current_user.admin %>
           <%= link_to "🚫 Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borrar el registro?" }, class: "btn btn-outline-danger" %>
@@ -60,7 +55,7 @@
         <% end %>
         <% @record.medical_results.each do |medical_result| %>
           <div class="mb-4">
-            <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
+            <small><em class="text-muted"><%= medical_result.created_at %> </em></small>
 
             <% if medical_result.photo.present? %>
               <div class="d-flex gap-6 align-items-center my-1" id="info-patient">
@@ -96,7 +91,7 @@
         <% end %>
         <% @record.medical_images.each do |medical_image| %>
           <div class="mb-4">
-            <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
+            <small><em class="text-muted"><%= medical_image.created_at %> </em></small>
 
             <% if medical_image.photo.present? %>
               <div class="d-flex gap-6 align-items-center my-1" id="info-patient">
