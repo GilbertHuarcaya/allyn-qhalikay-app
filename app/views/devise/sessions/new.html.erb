@@ -3,6 +3,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
 </head>
+
+
 <div class="background-sesion">
   <div class="row m-0" style="max-width: 100% ">
   <div class="col-12 col-md-6 p-0 m-0 d-flex flex-column justify-content-center align-items-center" >
@@ -13,6 +15,7 @@
   </div>
   </div>
     <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center " >
+           <img id="icons-login" src="https://cdn.dribbble.com/users/1006753/screenshots/4516273/healthcare-animation.gif" alt="icons">
       <div class="bg-white mx-auto sesion-form border border-dark" >
         <br>
         <div class="d-flex align-items-center justify-content-between headers-form" >
@@ -34,8 +37,8 @@
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
 
-          <div class="form-actions btn btn-success button">
-            <%= f.button :submit, "Ingresar" %>
+          <div class="form-actions btn btn-primary button" >
+            <%= f.button :submit, "Ingresar" ,id:"login-btn"%>
           </div>
           <br>
         <% end %>

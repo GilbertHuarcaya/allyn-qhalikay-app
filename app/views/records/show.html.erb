@@ -1,3 +1,5 @@
+<body class="some-views">
+
 <% if @partial.present? %>
 <%= render @partial %>
 <% else %>
@@ -20,7 +22,7 @@
             <%# <h4>Registro del usuario:</h4> %>
             <ul class="ul-info">
               <li>
-                <h4><strong>Registro del paciente</strong></h4>
+                <h4><strong>Datos del paciente</strong></h4>
               </li>
               <li>
                 <h4><strong>Nombre:</strong> <%= @record.user.user_name %></h4>
@@ -43,7 +45,7 @@
       <%# </div> %>
       <div class="d-flex  align-items-center btn-delete-edit">
         <% if current_user.admin %>
-          <%= link_to "Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borrar el registro?" }, class: "btn btn-outline-danger" %>
+          <%= link_to "🚫 Eliminar registro", record_path(@record), method: :delete, data: { confirm: "¿Estás seguro de borrar el registro?" }, class: "btn btn-outline-danger" %>
         <% end %>
         <%= link_to "Editar registro", edit_record_path(@record), class: "btn btn-outline-success" %>
       </div>
@@ -52,7 +54,7 @@
     <hr class="mb-5 mt-3">
     <div class="row">
       <div class="col-12 col-sm-6">
-        <div class="d-flex gap-3">  <h3>Resultados Medicos</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-details" %></div>
+        <div class="d-flex gap-3">  <h3><strong>• RESULTADOS MÉDICOS</strong></h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-result"), class: "btn btn-details" %></div>
         <% if @record.medical_results.empty? %>
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
@@ -61,16 +63,16 @@
             <small><em class="text-muted"><%= medical_result.created_at %> ago</em></small>
 
             <% if medical_result.photo.present? %>
-              <div class="d-flex gap-2 align-items-center my-1">
-                <p class="mb-0"><%= medical_result.title %></p>
-                <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+              <div class="d-flex gap-6 align-items-center my-1" id="info-patient">
+                <p class="mb-0">Archivo: <%= medical_result.title.capitalize %></p>
+                <%= link_to "🚫 Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
 
                 <%= cl_image_tag medical_result.photo.key, height: "70" %>
               </div>
             <% else %>
                <div class="d-flex gap-2 align-items-center my-1">
                 <h6><strong>Ningun archivo</strong></h6>
-                <%= link_to "Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "🚫 Eliminar", medical_result_path(medical_result), method: :delete, data: { confirm: "¿Estás seguro de borrar el resultado médico?" }, class: "btn btn-outline-danger btn-sm" %>
               </div>
             <% end %>
 
@@ -88,7 +90,7 @@
     <hr class="my-5">
     <div class="row">
       <div class="col-12 col-sm-6">
-        <div class="d-flex gap-3">  <h3>Imágenes Medicas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-details" %></div>
+        <div class="d-flex gap-3">  <h3><strong>• IMÁGENES MÉDICAS</strong></h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "medical-image"), class: "btn btn-details" %></div>
         <% if @record.medical_images.empty? %>
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
@@ -97,15 +99,15 @@
             <small><em class="text-muted"><%= medical_image.created_at %> ago</em></small>
 
             <% if medical_image.photo.present? %>
-              <div class="d-flex gap-2 align-items-center my-1">
-                <p class="mb-0"><%= medical_image.title %></p>
-                <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+              <div class="d-flex gap-6 align-items-center my-1" id="info-patient">
+                <p class="mb-0">Archivo: <%= medical_image.title.capitalize %></p>
+                <%= link_to "🚫 Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
                 <%= cl_image_tag medical_image.photo.key, height: "70" %>
               </div>
             <% else %>
                <div class="d-flex gap-2 align-items-center my-1">
                 <h6><strong>Ningun archivo</strong></h6>
-                <%= link_to "Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "🚫 Eliminar", medical_image_path(medical_image), method: :delete, data: { confirm: "¿Estás seguro de borrar la imágen médica?" }, class: "btn btn-outline-danger btn-sm" %>
               </div>
             <% end %>
 
@@ -123,7 +125,7 @@
     <hr class="my-5">
     <div class="row">
       <div class="col-12 col-sm-6">
-        <div class="d-flex gap-3">  <h3>Recetas</h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-details" %></div>
+        <div class="d-flex gap-3">  <h3><strong>• RECETAS</strong></h3>  <%= link_to "Detalles", record_path(id: @record.id, item: "prescription"), class: "btn btn-details" %></div>
         <% if @record.prescriptions.empty? %>
           <small><em class="text-muted">Ningun archivo</em></small>
         <% end %>
@@ -132,15 +134,15 @@
             <small><em class="text-muted"><%= prescription.created_at %> </em></small>
 
             <% if prescription.photo.present? %>
-              <div class="d-flex gap-2 align-items-center my-1">
-                <p class="mb-0"><%= prescription.title %></p>
-                <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+              <div class="d-flex gap-6 align-items-center my-1" id="info-patient">
+                <p class="mb-0">Archivo: <%= prescription.title.capitalize %></p>
+                <%= link_to "🚫 Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
                 <%= cl_image_tag prescription.photo.key, height: "70" %>
               </div>
             <% else %>
               <div class="d-flex gap-2 align-items-center my-1">
                 <h6><strong>Ningun archivo</strong></h6>
-                <%= link_to "Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "🚫 Eliminar", prescription_path(prescription), method: :delete, data: { confirm: "¿Estás seguro de borrar la receta?" }, class: "btn btn-outline-danger btn-sm" %>
               </div>
             <% end %>
 
@@ -168,3 +170,4 @@
 <% #link_to "Editar resultado médico", edit_record_medical_result_path(@record), class: "btn btn-flat" %>
 
 <% end %>
+</body>

@@ -11,7 +11,7 @@
   }
 }
 
-.btn-block{
+.btn-block {
   width: 100%;
 }
 
@@ -22,6 +22,7 @@
   background-color: #f8f9fa;
   height: 39px;
   transition: background 0.3s ease;
+
   &:hover {
     background: #e2e6ea;
     color: #18a0fb;
@@ -35,10 +36,18 @@
 }
 
 .btn-delete-edit .btn-outline-success:hover {
-    color: white;
-  }
+  color: white;
+}
 
 .btn-delete-edit .btn-outline-danger:hover {
   background-color: #FC4F4F;
   border-color: #FC4F4F;
+}
+
+#login-btn {
+  color: white;
+}
+
+#login-btn:hover {
+  color: rgb(0, 0, 0);
 }

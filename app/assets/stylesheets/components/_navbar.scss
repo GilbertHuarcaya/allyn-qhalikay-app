@@ -1,6 +1,5 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
   min-height: 76px;
   position: fixed;
   top: 0;
@@ -60,19 +59,23 @@
   border-radius: 0;
 }
 
+.nav-flush .nav-link a {
+  color: black;
+}
+
 .btn-toggle {
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.5rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgb(0, 0, 0);
   background-color: transparent;
   border: 0;
 }
 
 .btn-toggle:hover,
 .btn-toggle:focus {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgb(14, 12, 53);
   background-color: #d2f4ea;
 }
 
@@ -85,7 +88,7 @@
 }
 
 .btn-toggle[aria-expanded="true"] {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgb(0, 0, 0);
 }
 
 .btn-toggle[aria-expanded="true"]::before {
@@ -115,4 +118,32 @@
 
 .lh-tight {
   line-height: 1.25;
+}
+
+#dropdown03 {
+  color: black;
+  font-weight: 200
+}
+
+#dropdown03:hover {
+  color: rgb(133, 131, 131);
+}
+
+#navbarDropdown2 {
+  color: black;
+  font-weight: 200
+}
+
+#navbarDropdown2:hover {
+  color: rgb(133, 131, 131);
+}
+
+.dropdown-menu {
+  border-radius: 0px 0px 15px 15px;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 0;
+}
+
+#option-down:hover {
+  background-color: rgba(209, 209, 209, 0.529);
 }
