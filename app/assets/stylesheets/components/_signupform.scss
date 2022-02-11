@@ -35,12 +35,13 @@
 .signup-button {
   text-align: center;
   justify-content: center;
+  padding: 1rem;
   margin-left: 200px;
+  border-radius: 10px;
 }
 
 .welcome-text p {
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-top: 30px;
   font-weight: bold;
   font-size: 20px;
@@ -48,9 +49,7 @@
 }
 
 .welcome-text p strong {
-  font-family: 'Barlow',
-    sans-serif;
+  font-family: "Barlow", sans-serif;
   font-size: 23px;
   color: rgb(19, 42, 90);
-
 }
